@@ -1,5 +1,5 @@
 
-@extends('students.layout')
+@extends('layouts.app')
 
 @section('content')
     <div class="row">
@@ -91,7 +91,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Leave Date:</strong>
-                        <input type="text" name="Leave Date" value="{{ $employee->leaving }}"  class="form-control" placeholder="Leave Date">
+                        <input type="text" name="Leave Date" value="{{ $employee->leave }}"  class="form-control" placeholder="Leave Date">
                     </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

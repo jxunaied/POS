@@ -25,14 +25,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="181ee029-fc2c-4bf8-851b-0472527ab927" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pos.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/Employee/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/Employee/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/Employee/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/Employee/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +194,7 @@
       <workItem from="1594899711725" duration="11185000" />
       <workItem from="1595071774660" duration="255000" />
       <workItem from="1595072170980" duration="5163000" />
-      <workItem from="1595253531314" duration="1276000" />
+      <workItem from="1595253531314" duration="2059000" />
     </task>
     <servers />
   </component>
