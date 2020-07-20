@@ -32,21 +32,67 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ $student->name }}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" value="{{ $employee->name }}" class="form-control" placeholder="Name">
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Roll:</strong>
-                    <input type="text" name="roll" value="{{ $student->roll }}" class="form-control" placeholder="Roll">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Email:</strong>
+                        <input type="email" name="email" value="{{ $employee->email }}"  class="form-control" placeholder="Email" required>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Address:</strong>
-                    <textarea class="form-control" style="height:150px" name="address" placeholder="Address">{{ $student->address }}</textarea>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Phone:</strong>
+                        <input type="number" name="phone" value="{{ $employee->phone }}"  class="form-control" placeholder="Phone" required>
+                    </div>
                 </div>
-            </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Address:</strong>
+                        <input type="text" name="address" value="{{ $employee->address }}"  class="form-control" placeholder="Address" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Experience:</strong>
+                        <input type="text" name="experience" value="{{ $employee->experience }}"  class="form-control" placeholder="Experience" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Photo:</strong>
+                        <input type="text" name="photo" value="{{ $employee->photo }}"  class="form-control" placeholder="Photo" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Salary:</strong>
+                        <input type="text" name="salary" value="{{ $employee->salary }}"  class="form-control" placeholder="Salary" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Assigned Vacation:</strong>
+                        <input type="text" name="vacation" value="{{ $employee->vacation }}"  class="form-control" placeholder="Vacation" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>City:</strong>
+                        <input type="text" name="city" value="{{ $employee->city }}"  class="form-control" placeholder="City" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Join Date:</strong>
+                        <input type="text" name="Join Date" value="{{ $employee->joining }}"  class="form-control" placeholder="Join Date" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Leave Date:</strong>
+                        <input type="text" name="Leave Date" value="{{ $employee->leaving }}"  class="form-control" placeholder="Leave Date">
+                    </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

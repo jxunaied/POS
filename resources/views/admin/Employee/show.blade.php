@@ -21,15 +21,50 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Roll:</strong>
-                {{ $student->roll }}
+                <strong>Email:</strong>
+                {{ $student->email }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Address:</strong>
+                <strong>phone:</strong>
+                {{ $student->phone }}
+            </div>
+        </div><div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>address:</strong>
                 {{ $student->address }}
             </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>experience:</strong>
+                {{ $student->experience }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>vacation:</strong>
+                {{ $student->vacation }}
+            </div>
+        </div><div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>city:</strong>
+                {{ $student->city }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>joining:</strong>
+                {{ $student->joining }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>leave:</strong>
+                {{ $student->leave }}
+            </div>
+        </div>
         </div>
     </div>
 @endsection
