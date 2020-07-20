@@ -1,13 +1,17 @@
 
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
+<div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2> Show employee Information</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('students.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('employee.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -67,4 +71,7 @@
         </div>
         </div>
     </div>
+    </div>
+</div>
+</div>
 @endsection

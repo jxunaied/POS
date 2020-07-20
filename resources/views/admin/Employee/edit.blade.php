@@ -2,13 +2,17 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="content-page">
+        <!-- Start content -->
+        <div class="content">
+            <div class="container">
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Student Information</h2>
+                <h2>Edit employee Information</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('students.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('employee.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -24,7 +28,7 @@
         </div>
     @endif
 
-    <form action="{{ route('students.update',$student->id) }}" method="POST">
+    <form action="{{ route('employee.update',$employee->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -85,13 +89,13 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Join Date:</strong>
-                        <input type="text" name="Join Date" value="{{ $employee->joining }}"  class="form-control" placeholder="Join Date" required>
+                        <input type="text" name="joining" value="{{ $employee->joining }}"  class="form-control" placeholder="Join Date" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Leave Date:</strong>
-                        <input type="text" name="Leave Date" value="{{ $employee->leave }}"  class="form-control" placeholder="Leave Date">
+                        <input type="text" name="leave" value="{{ $employee->leave }}"  class="form-control" placeholder="Leave Date">
                     </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -99,4 +103,7 @@
         </div>
 
     </form>
+</div>
+</div>
+</div>
 @endsection
