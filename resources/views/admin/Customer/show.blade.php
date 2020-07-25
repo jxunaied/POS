@@ -8,10 +8,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Show employee Information</h2>
+                <h2> Show customer Information</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('employee.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('customer.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -20,53 +20,76 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                {{ $employee->name }}
+                {{ $customer->name }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email:</strong>
-                {{ $employee->email }}
+                {{ $customer->email }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>phone:</strong>
-                {{ $employee->phone }}
+                {{ $customer->phone }}
             </div>
         </div><div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>address:</strong>
-                {{ $employee->address }}
+                {{ $customer->address }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>experience:</strong>
-                {{ $employee->experience }}
+                <strong>city:</strong>
+                {{ $customer->city }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>vacation:</strong>
-                {{ $employee->vacation }}
+                <strong>shop_name:</strong>
+                {{ $customer->shop_name }}
             </div>
         </div><div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>city:</strong>
-                {{ $employee->city }}
+                <strong>nid_no:</strong>
+                {{ $customer->nid_no }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>joining:</strong>
-                {{ $employee->joining }}
+                <strong>account_holder:</strong>
+                {{ $customer->account_holder }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>leave:</strong>
-                {{ $employee->leave }}
+                <strong>account_number:</strong>
+                {{ $customer->account_number }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>bank_name:</strong>
+                {{ $customer->bank_name }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>bank_branch:</strong>
+                {{ $customer->bank_branch }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>due:</strong>
+                {{ $customer->due }}
+            </div>
+        </div><div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>photo:</strong>
+                {{ $customer->photo }}
             </div>
         </div>
         </div>
