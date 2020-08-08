@@ -41,7 +41,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="md md-terrain"></i> <span>Moltran </span></a>
+                        <a href="index.html" class="logo"><i class="md md-terrain"></i> <span>Inventory POS </span></a>
                     </div>
                 </div>
                 <!-- Button mobile view to collapse sidebar menu -->
@@ -162,13 +162,29 @@
                             <li class="has_sub">
                                 <a href="{{ route('employee.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Employees </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="inbox.html">Add Employee</a></li>
+                                    <li><a href="{{ route('employee.index') }}">All Employee</a></li>
+                                    <li><a href="{{ route('employee.create') }}">Add New Employee</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="#" class="waves-effect"><i class="md md-mail"></i><span> Customers </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="{{ route('customer.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Customers </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="inbox.html">Add Customer</a></li>
+                                    <li><a href="{{ route('customer.index') }}">All Customer</a></li>
+                                    <li><a href="{{ route('customer.create') }}">Add New Customer</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="{{ route('supplier.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Suppliers </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('supplier.index') }}">All Supplier</a></li>
+                                    <li><a href="{{ route('supplier.create') }}">Add New Supplier</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="{{ route('productcategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Products Category </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('productcategory.index') }}">All Category</a></li>
+                                    <li><a href="{{ route('productcategory.create') }}">Add New Category</a></li>
                                 </ul>
                             </li>
                         </ul>

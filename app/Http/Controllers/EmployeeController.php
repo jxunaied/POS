@@ -119,7 +119,7 @@ class EmployeeController extends Controller
             $imageName = 'default.png';
         }*/
 
-        $employee = new Employee();
+/*        $employee = new Employee();
         $employee->name = $request->input('name');
         $employee->email = $request->input('email');
         $employee->phone = $request->input('phone');
@@ -130,8 +130,9 @@ class EmployeeController extends Controller
         $employee->vacation = $request->input('vacation');
         $employee->joining = $request->input('joining');
         $employee->leave = $request->input('leave');
-        $employee->photo = $request->input('photo');
-        $employee->save();
+        $employee->photo = $request->input('photo');*/
+        //echo $employee;
+        $employee->update($request->all());
         return redirect()->route('employee.index')->with('success','Employee information updated successfully');
 
     }

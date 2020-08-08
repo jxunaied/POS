@@ -42,7 +42,6 @@
                         <th>address</th>
                         <th>city</th>
                         <th>type</th>
-                        <th>photo</th>
                         <th>shop_name</th>
                         <th>account_holder</th>
                         <th>account_number</th>
@@ -63,9 +62,7 @@
                             <td>{{ $supplier->phone }}</td>
                             <td>{{ $supplier->address }}</td>
                             <td>{{ $supplier->city }}</td>
-                            <td>{{ $supplier->salary }}</td>
                             <td>{{ $supplier->type }}</td>
-                            <td>{{ $supplier->photo }}</td>
                             <td>{{ $supplier->shop_name }}</td>
                             <td>{{ $supplier->account_holder }}</td>
                             <td>{{ $supplier->account_number }}</td>

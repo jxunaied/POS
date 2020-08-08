@@ -106,7 +106,6 @@ class SupplierController extends Controller
             "address"=>"required",
             "city"=>"required",
             "type"=>"required",
-            //"photo"=>"required",
             "shop_name"=>"required",
             "account_holder"=>"required",
             "account_number"=>"required",

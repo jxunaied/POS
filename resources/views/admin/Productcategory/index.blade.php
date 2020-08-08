@@ -39,17 +39,17 @@
                         <th>Name</th>
                         <th width="280px">Action</th>
                     </tr>
-                    @foreach ($ProductCategorys as $ProductCategory)
+                    @foreach ($productcategorys as $productcategory)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $ProductCategory->parentid }}</td>
-                            <td>{{ $ProductCategory->name }}</td>
+                            <td>{{ $productcategory->parentid }}</td>
+                            <td>{{ $productcategory->name }}</td>
 
                             <td>
-                                <form action="{{ route('productcategory.destroy',$ProductCategory->id) }}" method="POST">
-                                    <a class="btn btn-info" href="{{ route('productcategory.show',$ProductCategory->id) }}">Show</a>
+                                <form action="{{ route('productcategory.destroy',$productcategory->id) }}" method="POST">
+                                    <a class="btn btn-info" href="{{ route('productcategory.show',$productcategory->id) }}">Show</a>
 
-                                    <a class="btn btn-primary" href="{{ route('productcategory.edit',$ProductCategory->id) }}">Edit</a>
+                                    <a class="btn btn-primary" href="{{ route('productcategory.edit',$productcategory->id) }}">Edit</a>
 
                                     @csrf
                                     @method('DELETE')
@@ -64,6 +64,6 @@
         </div>
     </div>
 
-    {!! $ProductCategorys->links() !!}
+    {!! $productcategorys->links() !!}
 
 @endsection

@@ -106,8 +106,8 @@ class CustomerController extends Controller
         $customer->bank_branch = $request->input('bank_branch');
         $customer->balance = $request->input('balance');
         $customer->due = $request->input('due');
-        $customer->photo = $imageName;
-        $customer->save();
+        //$customer->photo = $imageName;
+        $customer->update($request->all());
         return redirect()->route('customer.index')->with('success','customer information updated successfully');
 
     }

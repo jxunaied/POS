@@ -17,13 +17,13 @@ class ProductCategoryController extends Controller
 
     public function index()
     {
-        $ProductCategorys = ProductCategory::latest()->paginate(12);
-        return view('admin.productcategory.index', compact('ProductCategorys'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $productcategorys = ProductCategory::latest()->paginate(12);
+        return view('admin.productcategory.index', compact('productcategorys'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
-        return view('admin.ProductCategory.create');
+        return view('admin.productcategory.create');
     }
 
 
@@ -34,10 +34,10 @@ class ProductCategoryController extends Controller
             "parentid"=>"required",
             
         ]);
-        $ProductCategory = new ProductCategory();
-        $ProductCategory->parentid = $request->input('parentid');        
-        $ProductCategory->name = $request->input('name');
-        $ProductCategory->save();
+        $productcategory = new ProductCategory();
+        $productcategory->parentid = $request->input('parentid');
+        $productcategory->name = $request->input('name');
+        $productcategory->save();
 
         return redirect()->route('productcategory.index')
             ->with('success','ProductCategory added successfully.');
@@ -46,15 +46,15 @@ class ProductCategoryController extends Controller
 
     public function show(ProductCategory $productcategory)
     {
-        return view('admin.ProductCategory.show', compact('productcategory'));
+        return view('admin.productcategory.show', compact('productcategory'));
     }
 
     public function edit(ProductCategory $productcategory)
     {
-        return view('admin.ProductCategory.edit',compact('productcategory'));
+        return view('admin.productcategory.edit',compact('productcategory'));
     }
 
-    public function update(Request $request, ProductCategory $ProductCategory)
+    public function update(Request $request, ProductCategory $productcategory)
     {
        $request->validate([
             "name"=>"required | min:3",
@@ -62,19 +62,19 @@ class ProductCategoryController extends Controller
         ]);
 
 
-        $ProductCategory = new ProductCategory();
-        $ProductCategory->name = $request->input('name');
-        $ProductCategory->parentid = $request->input('parentid');
-        $ProductCategory->save();
-        return redirect()->route('ProductCategory.index')->with('success','ProductCategory information updated successfully');
+        /*$productcategory = new ProductCategory();
+        $productcategory->name = $request->input('name');
+        $productcategory->parentid = $request->input('parentid');*/
+        $productcategory->update($request->all());
+        return redirect()->route('productcategory.index')->with('success','ProductCategory information updated successfully');
 
     }
 
 
-    public function destroy(ProductCategory $ProductCategory)
+    public function destroy(ProductCategory $productcategory)
     {
-        $ProductCategory->delete();
-        return redirect()->route('ProductCategory.index')
+        $productcategory->delete();
+        return redirect()->route('productcategory.index')
             ->with('success','ProductCategory information deleted successfully');
 
     }
