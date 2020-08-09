@@ -4,82 +4,84 @@ namespace App\Http\Controllers;
 
 use App\Expense;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class ExpenseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $Expenses = Expense::latest()->paginate(12);
+        return view('admin.expense.index', compact('Expenses'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.Expense.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>"required",
+            "category_id"=>"required",
+            "amount"=>"required",
+            "remarks"=>"required",
+            
+        ]);
+        $Expense = new Expense();
+        $Expense->name = $request->input('name');
+        $Expense->category_id = $request->input('category_id');        
+        $Expense->amount = $request->input('amount');
+        $Expense->remarks = $request->input('remarks');
+        $Expense->save();
+
+        return redirect()->route('expense.index')
+            ->with('success','Expense added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Expense  $expense
-     * @return \Illuminate\Http\Response
-     */
     public function show(Expense $expense)
     {
-        //
+        return view('admin.Expense.show', compact('expense'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Expense  $expense
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Expense $expense)
     {
-        //
+        return view('admin.Expense.edit',compact('expense'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Expense  $expense
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Expense $expense)
+    public function update(Request $request, Expense $Expense)
     {
-        //
+       $request->validate([
+            "name"=>"required | min:3",
+            "parentid"=>"required",
+        ]);
+
+
+        $Expense = new Expense();
+        $Expense->name = $request->input('name');
+        $Expense->category_id = $request->input('category_id');
+        $Expense->amount = $request->input('amount');
+        $Expense->remarks = $request->input('remarks');
+        $Expense->save();
+        return redirect()->route('Expense.index')->with('success','Expense information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Expense  $expense
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Expense $expense)
+
+    public function destroy(Expense $Expense)
     {
-        //
+        $Expense->delete();
+        return redirect()->route('Expense.index')
+            ->with('success','Expense information deleted successfully');
+
     }
 }
