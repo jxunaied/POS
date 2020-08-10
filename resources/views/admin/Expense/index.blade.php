@@ -45,9 +45,6 @@
                     @foreach ($expenses as $expense)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>
-                                <img class="img-rounded" style="height:35px; width: 35px;" src="{{ URL::asset("storage/expense/".$expense->photo) }}" alt="{{ $expense->name }}">
-                            </td>
                             <td>{{ $expense->name }}</td>
                             <td>{{ $expense->category_id }}</td>
                             <td>{{ $expense->amount }}</td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Expense;
+use App\ExpenseCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -17,13 +18,14 @@ class ExpenseController extends Controller
 
     public function index()
     {
-        $Expenses = Expense::latest()->paginate(12);
-        return view('admin.expense.index', compact('Expenses'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $expenses = Expense::latest()->paginate(12);
+        return view('admin.expense.index', compact('expenses'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
-        return view('admin.Expense.create');
+        $categories = ExpenseCategory::all();
+        return view('admin.Expense.create', compact('categories'));
     }
 
 
@@ -36,12 +38,12 @@ class ExpenseController extends Controller
             "remarks"=>"required",
             
         ]);
-        $Expense = new Expense();
-        $Expense->name = $request->input('name');
-        $Expense->category_id = $request->input('category_id');        
-        $Expense->amount = $request->input('amount');
-        $Expense->remarks = $request->input('remarks');
-        $Expense->save();
+        $expense = new Expense();
+        $expense->name = $request->input('name');
+        $expense->category_id = $request->input('category_id');
+        $expense->amount = $request->input('amount');
+        $expense->remarks = $request->input('remarks');
+        $expense->save();
 
         return redirect()->route('expense.index')
             ->with('success','Expense added successfully.');
@@ -50,15 +52,15 @@ class ExpenseController extends Controller
 
     public function show(Expense $expense)
     {
-        return view('admin.Expense.show', compact('expense'));
+        return view('admin.expense.show', compact('expense'));
     }
 
     public function edit(Expense $expense)
     {
-        return view('admin.Expense.edit',compact('expense'));
+        return view('admin.expense.edit',compact('expense'));
     }
 
-    public function update(Request $request, Expense $Expense)
+    public function update(Request $request, Expense $expense)
     {
        $request->validate([
             "name"=>"required | min:3",
@@ -66,21 +68,21 @@ class ExpenseController extends Controller
         ]);
 
 
-        $Expense = new Expense();
-        $Expense->name = $request->input('name');
-        $Expense->category_id = $request->input('category_id');
-        $Expense->amount = $request->input('amount');
-        $Expense->remarks = $request->input('remarks');
-        $Expense->save();
-        return redirect()->route('Expense.index')->with('success','Expense information updated successfully');
+        $expense = new Expense();
+        $expense->name = $request->input('name');
+        $expense->category_id = $request->input('category_id');
+        $expense->amount = $request->input('amount');
+        $expense->remarks = $request->input('remarks');
+        $expense->save();
+        return redirect()->route('expense.index')->with('success','Expense information updated successfully');
 
     }
 
 
-    public function destroy(Expense $Expense)
+    public function destroy(Expense $expense)
     {
-        $Expense->delete();
-        return redirect()->route('Expense.index')
+        $expense->delete();
+        return redirect()->route('expense.index')
             ->with('success','Expense information deleted successfully');
 
     }

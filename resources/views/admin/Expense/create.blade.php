@@ -44,6 +44,16 @@
                                         <label>Category ID</label>
                                         <input type="text" name="category_id" class="form-control" placeholder="category id" required>
                                     </div>
+                                   {{-- <div class="form-group">
+                                        <label>Expense Category</label>
+                                        <select name="category_id" class="form-control">
+                                            <option value="" disabled selected>Select a Category</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>--}}
+
                                     <div class="form-group">
                                         <label>amount</label>
                                         <input type="text" name="amount" class="form-control" placeholder="amount" required>
