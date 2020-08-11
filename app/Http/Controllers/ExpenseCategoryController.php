@@ -4,82 +4,79 @@ namespace App\Http\Controllers;
 
 use App\ExpenseCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class ExpenseCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $expensecategorys = ExpenseCategory::latest()->paginate(12);
+        return view('admin.expensecategory.index', compact('expensecategorys'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $categories= ExpenseCategory::all();
+        return view('admin.expensecategory.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>"required",
+            "parent_id"=>"required",
+            
+        ]);
+        $expensecategory = new ExpenseCategory();
+        $expensecategory->parent_id = $request->input('parent_id');
+        $expensecategory->name = $request->input('name');
+        $expensecategory->save();
+
+        return redirect()->route('expensecategory.index')
+            ->with('success','ExpenseCategory added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ExpenseCategory  $expenseCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ExpenseCategory $expenseCategory)
+    public function show(ExpenseCategory $expensecategory)
     {
-        //
+        return view('admin.expensecategory.show', compact('expensecategory'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ExpenseCategory  $expenseCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ExpenseCategory $expenseCategory)
+    public function edit(ExpenseCategory $expensecategory)
     {
-        //
+        return view('admin.expensecategory.edit',compact('expensecategory'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ExpenseCategory  $expenseCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ExpenseCategory $expenseCategory)
+    public function update(Request $request, ExpenseCategory $expensecategory)
     {
-        //
+       $request->validate([
+            "name"=>"required | min:3",
+            "parent_id"=>"required",
+        ]);
+
+
+        /*$ExpenseCategory = new ExpenseCategory();
+        $ExpenseCategory->name = $request->input('name');
+        $ExpenseCategory->parent_id = $request->input('parent_id');*/
+        $expensecategory->update($request->all());
+        return redirect()->route('expensecategory.index')->with('success','ExpenseCategory information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ExpenseCategory  $expenseCategory
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ExpenseCategory $expenseCategory)
+
+    public function destroy(ExpenseCategory $expensecategory)
     {
-        //
+        $expensecategory->delete();
+        return redirect()->route('expensecategory.index')
+            ->with('success','Expense Category information deleted successfully');
+
     }
 }

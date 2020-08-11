@@ -26,3 +26,4 @@ Route::resource('supplier', 'SupplierController');
 Route::resource('customer', 'CustomerController');
 Route::resource('productcategory', 'ProductCategoryController');
 Route::resource('expense', 'ExpenseController');
+Route::resource('expensecategory', 'ExpenseCategoryController');

@@ -9,9 +9,9 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Add New Expense</h4>
+                        <h4 class="pull-left page-title">Add New expensecategory</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="{{ route('expense.index') }}">expense</a></li>
+                            <li><a href="{{ route('expensecategory.index') }}">expensecategory</a></li>
                             <li class="active">create</li>
                         </ol>
                     </div>
@@ -32,37 +32,25 @@
                             </div>
                         @endif
                         <div class="panel panel-default">
-                            <div class="panel-heading"><h3 class="panel-title">Expense Information</h3></div>
+                            <div class="panel-heading"><h3 class="panel-title">expensecategory Information</h3></div>
                             <div class="panel-body">
-                                <form action="{{ route('expense.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('expensecategory.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Name" required>
-                                    </div>
-                                    <!-- <div class="form-group">
-                                        <label>Category ID</label>
-                                        <input type="text" name="category_id" class="form-control" placeholder="category id" required>
-                                    </div> -->
-                                  <div class="form-group">
-                                        <label>Expense Category</label>
-                                        <select name="category_id" class="form-control">
-                                            <option value="" disabled selected>Select a Category</option>
+                                        <label>Select Parent</label>
+
+                                        <select name="parent_id" class="form-control">
+                                            <option value="" disabled selected>Select Parent</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
-
+                                    </div>                                                                  
                                     <div class="form-group">
-                                        <label>amount</label>
-                                        <input type="text" name="amount" class="form-control" placeholder="amount" required>
-                                    </div>                            
-                                    <div class="form-group">
-                                        <label>remarks</label>
-                                        <input type="text" name="remarks" accept="form-control" class="remarks" required>
+                                        <label>Name</label>
+                                        <input type="text" name="name" class="form-control" placeholder="Name" >
                                     </div>
-                                    <button type="submit" class="btn btn-purple waves-effect waves-light">Add Expense</button>
+                                    <button type="submit" class="btn btn-purple waves-effect waves-light">Add expensecategory</button>
                                 </form>
                             </div><!-- panel-body -->
                         </div> <!-- panel -->
