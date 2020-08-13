@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Expense;
 use App\ExpenseCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -38,10 +39,15 @@ class ExpenseController extends Controller
             "remarks"=>"required",
             
         ]);
+
+        $date = Carbon::now();
         $expense = new Expense();
         $expense->name = $request->input('name');
         $expense->category_id = $request->input('category_id');
         $expense->amount = $request->input('amount');
+        $expense->month = $date->format('F');
+        $expense->year = $date->format('Y');
+        $expense->date = $date->format('Y-m-d');
         $expense->remarks = $request->input('remarks');
         $expense->save();
 
@@ -85,5 +91,33 @@ class ExpenseController extends Controller
         return redirect()->route('expense.index')
             ->with('success','Expense information deleted successfully');
 
+    }
+
+    public function today_expense()
+    {
+        $today = date('Y-m-d');
+        $expenses = Expense::latest()->where('date', $today)->get();
+        return view('expense.today', compact('expenses'));
+    }
+
+    public function month_expense($month = null)
+    {
+        if ($month == null)
+        {
+            $month = date('F');
+        }
+        $expenses = Expense::latest()->where('month', $month)->get();
+        return view('expense.month', compact('expenses', 'month'));
+    }
+
+    public function yearly_expense($year = null)
+    {
+        if ($year == null)
+        {
+            $year = date('Y');
+        }
+        $expenses = Expense::latest()->where('year', $year)->get();
+        $years = Expense::select('year')->distinct()->take(12)->get();
+        return view('expense.year', compact('expenses', 'year', 'years'));
     }
 }

@@ -32,12 +32,22 @@
                     </div>
                 @endif
 
+                <div class="card-header">
+                    <h3 class="card-title">
+                        EXPENSES LISTS
+                        <small class="text-danger pull-right">Total Expenses : {{ $expenses->sum('amount') }} Taka</small>
+                    </h3>
+                </div>
+
                 <table class="table table-bordered">
                     <tr>
-                        <th>No</th>
-                        <th>name</th>
-                        <th>category_id</th>
-                        <th>amount</th>
+                        <th>Serial</th>
+                        <th>Expense Title</th>
+                        <th>Expense Type</th>
+                        <th>Amount</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                        <th>Date</th>
                         <th>remarks</th>
 
                         <th width="280px">Action</th>
@@ -47,10 +57,11 @@
                             <td>{{ ++$i }}</td>
                             <td>{{ $expense->name }}</td>
                             <td>{{ $expense->category_id }}</td>
-                            <td>{{ $expense->amount }}</td>
-                            <td>{{ $expense->address }}</td>
+                            <td>{{ number_format($expense->amount, 2) }}</td>
+                            <td>{{ $expense->month }}</td>
+                            <td>{{ $expense->year }}</td>
+                            <td>{{ $expense->created_at->format('d M Y h:i:s A') }}</td>
                             <td>{{ $expense->remarks }}</td>
-
                             <td>
                                 <form action="{{ route('expense.destroy',$expense->id) }}" method="POST">
                                     <a class="btn btn-info" href="{{ route('expense.show',$expense->id) }}">Show</a>

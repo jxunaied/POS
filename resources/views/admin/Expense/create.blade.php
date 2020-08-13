@@ -40,11 +40,11 @@
                                         <label>Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Name" required>
                                     </div>
-                                    <div class="form-group">
+                                    {{--<div class="form-group">
                                         <label>Category ID</label>
                                         <input type="text" name="category_id" class="form-control" placeholder="category id" required>
-                                    </div>
-                                   {{-- <div class="form-group">
+                                    </div>--}}
+                                    <div class="form-group">
                                         <label>Expense Category</label>
                                         <select name="category_id" class="form-control">
                                             <option value="" disabled selected>Select a Category</option>
@@ -52,7 +52,7 @@
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
-                                    </div>--}}
+                                    </div>
 
                                     <div class="form-group">
                                         <label>amount</label>
