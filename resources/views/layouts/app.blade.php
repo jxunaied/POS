@@ -195,10 +195,11 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="{{ route('expensecategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense Category </span><span class="pull-right"><i class="md md-add"></i></span></a>
+
+                                <a href="{{ route('expense.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ route('expensecategory.index') }}">All Category</a></li>
-                                    <li><a href="{{ route('expensecategory.create') }}">Add New Category</a></li>
+                                    <li><a href="{{ route('expense.index') }}">All Expense</a></li>
+                                    <li><a href="{{ route('expense.create') }}">Add New Expense</a></li>
                                 </ul>
                             </li>
                         </ul>

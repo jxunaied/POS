@@ -18,6 +18,9 @@ class CreateExpensesTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('category_id');
             $table->float('amount');
+            $table->string('month');
+            $table->string('year');
+            $table->string('date');
             $table->string('remarks');
             $table->foreign('category_id')->references('id')->on('expense_categories')->onDelete('cascade');
             $table->timestamps();
