@@ -19,8 +19,13 @@ class ExpenseController extends Controller
 
     public function index()
     {
+<<<<<<< Updated upstream
         $expenses = Expense::latest()->paginate(12);
         return view('admin.expense.index', compact('expenses'))->with('i', (request()->input('page', 1) - 1) * 5);
+=======
+        $Expenses = expense::latest()->paginate(12);
+        return view('admin.expense.index', compact('Expenses'))->with('i', (request()->input('page', 1) - 1) * 5);
+>>>>>>> Stashed changes
     }
 
     public function create()
