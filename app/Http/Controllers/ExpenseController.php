@@ -19,13 +19,8 @@ class ExpenseController extends Controller
 
     public function index()
     {
-<<<<<<< Updated upstream
         $expenses = Expense::latest()->paginate(12);
         return view('admin.expense.index', compact('expenses'))->with('i', (request()->input('page', 1) - 1) * 5);
-=======
-        $Expenses = expense::latest()->paginate(12);
-        return view('admin.expense.index', compact('Expenses'))->with('i', (request()->input('page', 1) - 1) * 5);
->>>>>>> Stashed changes
     }
 
     public function create()
@@ -102,7 +97,7 @@ class ExpenseController extends Controller
     {
         $today = date('Y-m-d');
         $expenses = Expense::latest()->where('date', $today)->get();
-        return view('expense.date', compact('expenses'));
+        return view('expense.today', compact('expenses'));
     }
 
     public function month_expense($month = null)
