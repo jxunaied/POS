@@ -27,3 +27,4 @@ Route::resource('customer', 'CustomerController');
 Route::resource('productcategory', 'ProductCategoryController');
 Route::resource('expense', 'ExpenseController');
 Route::resource('expensecategory', 'ExpenseCategoryController');
+Route::get('expense-today', 'ExpenseController@today_expense');
