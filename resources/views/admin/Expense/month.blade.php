@@ -81,6 +81,4 @@
         </div>
     </div>
 
-    {!! $expenses->links() !!}
-
 @endsection

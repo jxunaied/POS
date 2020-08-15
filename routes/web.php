@@ -28,3 +28,7 @@ Route::resource('productcategory', 'ProductCategoryController');
 Route::resource('expense', 'ExpenseController');
 Route::resource('expensecategory', 'ExpenseCategoryController');
 Route::get('expense-today', 'ExpenseController@today_expense');
+Route::get('expense-today', 'ExpenseController@today_expense');
+Route::get('expense-today', 'ExpenseController@today_expense')->name('expense.date');
+Route::get('expense-month/{month?}', 'ExpenseController@month_expense')->name('expense.month');
+Route::get('expense-yearly/{year?}', 'ExpenseController@yearly_expense')->name('expense.year');
