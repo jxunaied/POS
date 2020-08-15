@@ -97,7 +97,7 @@ class ExpenseController extends Controller
     {
         $today = date('Y-m-d');
         $expenses = Expense::latest()->where('date', $today)->get();
-        return view('expense.today', compact('expenses'));
+        return view('expense.date', compact('expenses'));
     }
 
     public function month_expense($month = null)

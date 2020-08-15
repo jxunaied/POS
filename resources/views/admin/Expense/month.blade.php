@@ -39,13 +39,6 @@
                     </h3>
                 </div>
 
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Today's Expenses
-                    <a class="btn btn-primary" href="{{ route('expense.date') }}">Today's Expenses</a>
-                    </h3>
-                </div>
-
                 <table class="table table-bordered">
                     <tr>
                         <th>Serial</th>
