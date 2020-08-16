@@ -98,7 +98,9 @@ class ExpenseController extends Controller
     {
         $today = date('Y-m-d');
         $expenses = Expense::latest()->where('date', $today)->get();
+
         return view('admin.expense.date', compact('expenses'));
+
     }
 
     public function month_expense($month = null)
@@ -118,6 +120,40 @@ class ExpenseController extends Controller
             $year = date('Y');
         }
         $expenses = Expense::latest()->where('year', $year)->get();
+        $years = Expense::select('year')->distinct()->take(12)->get();
+        return view('admin.expense.year', compact('expenses', 'year', 'years'));
+    }
+
+    public function yearly_expense_monthly($month = null, $year = null)
+    {
+        if ($year == null)
+        {
+            $year = date('Y');
+        }
+        if ($month == null)
+        {
+            $month = date('F');
+        }
+        $expenses = Expense::latest()->where('year', $year)->where('month', $month)->get();
+        $years = Expense::select('year')->distinct()->take(12)->get();
+        return view('admin.expense.year', compact('expenses', 'year', 'years'));
+    }
+
+    public function yearly_expense_monthly_date($date = null, $month = null, $year = null)
+    {
+        if ($year == null)
+        {
+            $year = date('Y');
+        }
+        if ($month == null)
+        {
+            $month = date('F');
+        }
+        if ($date == null)
+        {
+            $date = date('Y-m-d');
+        }
+        $expenses = Expense::latest()->where('year', $year)->orWhere('month', $month)->orWhere('date', $date)->get();
         $years = Expense::select('year')->distinct()->take(12)->get();
         return view('admin.expense.year', compact('expenses', 'year', 'years'));
     }

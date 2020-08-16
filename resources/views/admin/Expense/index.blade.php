@@ -39,6 +39,7 @@
                     </h3>
                 </div>
 
+<<<<<<< HEAD
                 <div class="card-header">
                     <h3 class="card-title">
                         Today's Expenses
@@ -46,6 +47,8 @@
                     </h3>
                 </div>
 
+=======
+>>>>>>> revert-8-master
                 <table class="table table-bordered">
                     <tr>
                         <th>Serial</th>
