@@ -35,21 +35,20 @@ class ExpenseController extends Controller
     {
         $request->validate([
             "name"=>"required",
-            "category_id"=>"required",
-            "amount"=>"required",
-            "remarks"=>"required",
+            "employee_id"=>"required",
+            "salary_month"=>"required",
+            "salary_year"=>"required",
+            "paid_amount"=>"required",
             
         ]);
 
         $date = Carbon::now();
         $expense = new Expense();
         $expense->name = $request->input('name');
-        $expense->category_id = $request->input('category_id');
-        $expense->amount = $request->input('amount');
-        $expense->month = $date->format('F');
-        $expense->year = $date->format('Y');
-        $expense->date = $date->format('Y-m-d');
-        $expense->remarks = $request->input('remarks');
+        $expense->category_id = $request->input('employee_id');
+        $expense->amount = $request->input('salary_month');
+        $expense->month = $date->format('salary_year');
+        $expense->year = $date->format('paid_amount');
         $expense->save();
 
         return redirect()->route('expense.index')
@@ -139,7 +138,7 @@ class ExpenseController extends Controller
         return view('admin.expense.year', compact('expenses', 'year', 'years'));
     }
 
-    public function yearly_expense_monthly_date($date = null, $month = null, $year = null)
+   /* public function yearly_expense_monthly_date($date = null, $month = null, $year = null)
     {
         if ($year == null)
         {
@@ -156,5 +155,13 @@ class ExpenseController extends Controller
         $expenses = Expense::latest()->where('year', $year)->orWhere('month', $month)->orWhere('date', $date)->get();
         $years = Expense::select('year')->distinct()->take(12)->get();
         return view('admin.expense.year', compact('expenses', 'year', 'years'));
+    }*/
+
+    public function yearly_expense_monthly_date(Request $request)
+    {
+        $date = $request->date;
+        $expenses = Expense::latest()->where('date', $date)->get();
+        $years = Expense::select('year')->distinct()->take(12)->get();
+        return view('admin.expense.year', compact('expenses'));
     }
 }

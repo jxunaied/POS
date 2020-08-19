@@ -62,9 +62,7 @@ class ProductCategoryController extends Controller
         ]);
 
 
-        /*$productcategory = new ProductCategory();
-        $productcategory->name = $request->input('name');
-        $productcategory->parentid = $request->input('parentid');*/
+        
         $productcategory->update($request->all());
         return redirect()->route('productcategory.index')->with('success','ProductCategory information updated successfully');
 
