@@ -32,3 +32,4 @@ Route::get('expense-month/{month?}', 'ExpenseController@month_expense')->name('e
 //Route::get('expense-yearly/{year?}', 'ExpenseController@yearly_expense')->name('expense.year');
 //Route::get('expense-yearly/{month?}/{year?}', 'ExpenseController@yearly_expense_monthly')->name('expense.year');
 Route::get('expense-yearly/{date?}/{month?}/{year?}', 'ExpenseController@yearly_expense_monthly_date')->name('expense.year');
+Route::resource('salary', 'SalaryController');
