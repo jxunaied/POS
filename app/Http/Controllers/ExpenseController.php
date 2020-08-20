@@ -139,22 +139,12 @@ class ExpenseController extends Controller
         return view('admin.expense.year', compact('expenses', 'year', 'years'));
     }
 
-    public function yearly_expense_monthly_date($date = null, $month = null, $year = null)
+    public function yearly_expense_monthly_date(Request $request)
     {
-        if ($year == null)
-        {
-            $year = date('Y');
-        }
-        if ($month == null)
-        {
-            $month = date('F');
-        }
-        if ($date == null)
-        {
-            $date = date('Y-m-d');
-        }
-        $expenses = Expense::latest()->where('year', $year)->orWhere('month', $month)->orWhere('date', $date)->get();
+        $date = $request->date;
+
+        $expenses = Expense::latest()->where('date', $date)->get();
         $years = Expense::select('year')->distinct()->take(12)->get();
-        return view('admin.expense.year', compact('expenses', 'year', 'years'));
+        return view('admin.expense.year', compact('expenses'));
     }
 }
