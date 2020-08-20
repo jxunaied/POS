@@ -39,16 +39,15 @@
                     </h3>
                 </div>
 
-<<<<<<< HEAD
                 <div class="card-header">
-                    <h3 class="card-title">
-                        Today's Expenses
-                 {{--   <a class="btn btn-primary" href="{{ route('expense.date') }}">Today's Expenses</a>--}}
-                    </h3>
+                    <h3 class="card-title"></h3>
+                        <form action="{{route('expense.year')}}" method="get">
+                            <input type="date" name="date">
+                            <input type="submit" value="Submit">
+                        </form>
                 </div>
 
-=======
->>>>>>> revert-8-master
+
                 <table class="table table-bordered">
                     <tr>
                         <th>Serial</th>
