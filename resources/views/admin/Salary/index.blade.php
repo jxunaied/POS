@@ -35,7 +35,7 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>No.</th>
-                        <th>employee_id</th>                        
+                        <th>employee name</th>                        
                         <th>salary_month</th>
                         <th>salary_year</th>
                         <th>paid_amount</th>
@@ -44,7 +44,7 @@
                     @foreach ($salarys as $salary)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $salary->employee_id }}</td>
+                            <td>{{ $salary->employee->name }}</td>
                             <td>{{ $salary->salary_month }}</td>
                             <td>{{ $salary->salary_year }}</td>
                             <td>{{ $salary->paid_amount }}</td>

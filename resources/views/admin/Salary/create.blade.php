@@ -62,7 +62,7 @@
                                                     <option value="november">November</option>
                                                     <option value="december">December</option>
                                                 </select>
-                                            </div>
+                                        </div>
                                     </div>                                                                  
                                     <div class="form-group">
                                         <label>Year</label>
