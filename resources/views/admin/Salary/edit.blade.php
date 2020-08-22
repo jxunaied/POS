@@ -37,10 +37,13 @@
                 <div class="form-group">
                     <strong>name:</strong>
                     <select name="employee_id" class="form-control">
-                                            <option value="{{$salary->name }}" 
+                                            <!-- <option value="{{$salary->name }}" 
                                                 disabled selected>Select Employee</option>
                                             @foreach($employees as $employee)
                                                 <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                            @endforeach -->
+                                            @foreach($employees as $employee)
+                                            <option value="{{$employee->id}}" {{ ($employee->id == $salary->employee_id) ? 'selected="selected"' : '' }}> {{$salary->employee->name }} </option>
                                             @endforeach
                     </select>
                 </div>        
@@ -48,18 +51,32 @@
                     <strong>salary_month:</strong>
                     <select name="salary_month" class="form-control">
                                                     <option value="" selected disabled>Select a month</option>
-                                                    <option value="january">January</option>
-                                                    <option value="february">February</option>
-                                                    <option value="march">March</option>
-                                                    <option value="april">April</option>
-                                                    <option value="may">May</option>
-                                                    <option value="june">June</option>
-                                                    <option value="july">July</option>
-                                                    <option value="august">August</option>
-                                                    <option value="september">September</option>
-                                                    <option value="october">October</option>
-                                                    <option value="november">November</option>
-                                                    <option value="december">December</option>
+
+                                                    <option value="january" @if ( $salary->salary_month == "january") {{ 'selected' }} @endif
+                                                    >January</option>
+
+                                                    <option value="february" @if ( $salary->salary_month == "february") {{ 'selected' }} @endif
+>February</option>
+                                                    <option value="march" @if ( $salary->salary_month == "march") {{ 'selected' }} @endif
+>March</option>
+                                                    <option value="april" @if ( $salary->salary_month == "april") {{ 'selected' }} @endif
+>April</option>
+                                                    <option value="may" @if ( $salary->salary_month == "may") {{ 'selected' }} @endif
+>May</option>
+                                                    <option value="june" @if ( $salary->salary_month == "june") {{ 'selected' }} @endif
+>June</option>
+                                                    <option value="july" @if ( $salary->salary_month == "july") {{ 'selected' }} @endif
+>July</option>
+                                                    <option value="august" @if ( $salary->salary_month == "august") {{ 'selected' }} @endif
+>August</option>
+                                                    <option value="september" @if ( $salary->salary_month == "september") {{ 'selected' }} @endif
+>September</option>
+                                                    <option value="october" @if ( $salary->salary_month == "october") {{ 'selected' }} @endif
+>October</option>
+                                                    <option value="november" @if ( $salary->salary_month == "november") {{ 'selected' }} @endif
+>November</option>
+                                                    <option value="december" @if ( $salary->salary_month == "december") {{ 'selected' }} @endif
+>December</option>
                      </select>
                 </div> 
                 <div class="form-group">
