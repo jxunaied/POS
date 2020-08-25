@@ -36,16 +36,17 @@
                             <div class="panel-body">
                                 <form action="{{ route('expensecategory.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group">
+{{--                                    <div class="form-group">
                                         <label>Select Parent</label>
 
                                         <select name="parent_id" class="form-control">
                                             <option value="" disabled selected>Select Parent</option>
+                                            <option value="0">None</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
-                                    </div>                                                                  
+                                    </div> --}}
                                     <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Name" >

@@ -174,6 +174,13 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
+                                <a href="{{ route('expensecategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense Category</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('expensecategory.index') }}">All Expense Category</a></li>
+                                    <li><a href="{{ route('expensecategory.create') }}">Add New Expense Category</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
                                 <a href="{{ route('expense.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('expense.index') }}">All Expense</a></li>

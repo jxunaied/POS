@@ -32,11 +32,10 @@ class ExpenseCategoryController extends Controller
     {
         $request->validate([
             "name"=>"required",
-            "parent_id"=>"required",
             
         ]);
         $expensecategory = new ExpenseCategory();
-        $expensecategory->parent_id = $request->input('parent_id');
+        $expensecategory->parent_id = 0;
         $expensecategory->name = $request->input('name');
         $expensecategory->save();
 

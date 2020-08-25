@@ -9,16 +9,16 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">expensecategorys Information</h4>
+                        <h4 class="pull-left page-title">Expense Category Information</h4>
                         <ol class="breadcrumb pull-right">
-                            <li class="active">expensecategory</li>
+                            <li class="active">Expense category</li>
                         </ol>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>All expensecategory Information</h2>
+                            <h2>All Expense Category Information</h2>
                         </div>
                         <div class="pull-right">
                             <a class="btn btn-success" href="{{ route('expensecategory.create') }}"> Create New expensecategory</a>
@@ -35,14 +35,17 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>No.</th>
-                        <th>parent id</th>                        
                         <th>Name</th>
                         <th width="280px">Action</th>
                     </tr>
                     @foreach ($expensecategorys as $expensecategory)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $expensecategory->parent_id }}</td>
+                            {{--@if($expensecategory->parent_id ==0)
+                                <td>N/A</td>
+                            @else
+                                <td>{{ $expensecategory->parent_name->name }}</td>
+                            @endif--}}
                             <td>{{ $expensecategory->name }}</td>
 
                             <td>

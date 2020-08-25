@@ -18,13 +18,12 @@ class SalaryController extends Controller
 
     public function index()
     {
-        $array = array();  
         $salarys = Salary::latest()->paginate(12);
-        foreach($salarys as $value) {
+        /*foreach($salarys as $value) {
         $employees= Employee::where('id', $value->employee_id);
         array_push($array, $employees->name);
-        }
-        return view('admin.salary.index', compact('salarys', 'array'))->with('i', (request()->input('page', 1) - 1) * 5);
+        }*/
+        return view('admin.salary.index', compact('salarys'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
