@@ -19,6 +19,7 @@ class CreateSalariesTable extends Migration
             $table->string('salary_month');
             $table->string('salary_year');
             $table->float('paid_amount');
+            $table->foreign('employee_id')->references('id')->on('employee')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductCategoriesTable extends Migration
+class CreateLandOfUbsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateProductCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_categories', function (Blueprint $table) {
+        Schema::create('land_of_ubs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->float('kata');
+            $table->float('decimal');
+            $table->unsignedBigInteger('land_owners_id');
+            $table->string('remarks');
+            $table->foreign('land_owners_id')->references('id')->on('land_owners')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateProductCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_categories');
+        Schema::dropIfExists('land_of_ubs');
     }
 }

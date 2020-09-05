@@ -33,10 +33,19 @@
         @method('PUT')
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ $employee->name }}" class="form-control" placeholder="Name">
+            {{--<div class="col-xs-12 col-sm-12 col-md-12">
+                <img class="img-rounded" style="height:100px; width: 100px;" src="{{ URL::asset("storage/employee/".$employee->photo) }}" alt="{{ $employee->name }}">
+
+            </div>
+            <div class="form-group">
+                <label>Update Employee Photo</label>
+                <input type="file" name="photo" accept="image/*" class="upload">
+            </div>--}}
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Name:</strong>
+                        <input type="text" name="name" value="{{ $employee->name }}" class="form-control" placeholder="Name">
+                    </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -64,20 +73,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Photo:</strong>
-                        <input type="text" name="photo" value="{{ $employee->photo }}"  class="form-control" placeholder="Photo" required>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
                         <strong>Salary:</strong>
                         <input type="text" name="salary" value="{{ $employee->salary }}"  class="form-control" placeholder="Salary" required>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Assigned Vacation:</strong>
-                        <input type="text" name="vacation" value="{{ $employee->vacation }}"  class="form-control" placeholder="Vacation" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -89,19 +86,19 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Join Date:</strong>
-                        <input type="text" name="joining" value="{{ $employee->joining }}"  class="form-control" placeholder="Join Date" required>
+                        <input type="text" name="joining_date" value="{{ $employee->joining }}"  class="form-control" placeholder="Join Date" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Leave Date:</strong>
-                        <input type="text" name="leave" value="{{ $employee->leave }}"  class="form-control" placeholder="Leave Date">
+                        <input type="text" name="leave_date" value="{{ $employee->leave }}"  class="form-control" placeholder="Leave Date">
                     </div>
+                </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-
     </form>
 </div>
 </div>

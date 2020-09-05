@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductCategoriesTable extends Migration
+class CreateCashDepositesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateProductCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_categories', function (Blueprint $table) {
+        Schema::create('cash_deposits', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('deposit_date');
+            $table->string('from');
+            $table->string('to');
+            $table->float('amount');
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateProductCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_categories');
+        Schema::dropIfExists('cash_deposits');
     }
 }

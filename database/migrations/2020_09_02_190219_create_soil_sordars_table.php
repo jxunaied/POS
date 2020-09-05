@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductCategoriesTable extends Migration
+class CreateSoilSordarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateProductCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_categories', function (Blueprint $table) {
+        Schema::create('soil_sordars', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->float('due', 10, 0)->default(0)->unsigned();
+            $table->float('payable', 10, 0)->default(0)->unsigned();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateProductCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_categories');
+        Schema::dropIfExists('soil_sordars');
     }
 }

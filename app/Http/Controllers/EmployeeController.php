@@ -32,18 +32,18 @@ class EmployeeController extends Controller
     {
         $request->validate([
             "name"=>"required | min:3",
-            "email"=>"required | email | unique:employees",
+            //"email"=>"required | email | unique:employees",
             "phone"=>"required",
             "address"=>"required",
             "experience"=>"required",
-            "photo"=>"required |image",
+            /*"photo"=>"required |image",*/
             "salary"=>"required",
-            "vacation"=>"required",
             "city"=>"required",
-            "joining"=>"required",
-            "leave"=>"required"
+            "nid" => "required"
+            /*"joining"=>"required",*/
+            //"leave"=>"required"
         ]);
-        $image = $request->file('photo');
+       /* $image = $request->file('photo');
         $slug =  Str::slug($request->input('name'));
         if ($request->hasFile('photo'))
         {
@@ -57,11 +57,15 @@ class EmployeeController extends Controller
         } else
         {
             $imageName = 'default.png';
-        }
+        }*/
 
-        $employee = new Employee();
+        /*
         $employee->name = $request->input('name');
-        $employee->email = $request->input('email');
+        if($request->input('email') == null){
+            $employee->email = 'not_available@pos.com';
+        } else {
+            $employee->email = $request->input('email');
+        }
         $employee->phone = $request->input('phone');
         $employee->address = $request->input('address');
         $employee->city = $request->input('city');
@@ -71,7 +75,9 @@ class EmployeeController extends Controller
         $employee->joining = $request->input('joining');
         $employee->leave = $request->input('leave');
         $employee->photo = $imageName;
-        $employee->save();
+        $employee->save();*/
+        $employee = new Employee();
+        $employee->save($request->all());
 
         return redirect()->route('employee.index')
             ->with('success','Employee added successfully.');
@@ -92,16 +98,17 @@ class EmployeeController extends Controller
     {
        $request->validate([
             "name"=>"required | min:3",
-            "email"=>"required | email ",
+            /*"email"=>"required | email ",*/
             "phone"=>"required",
             "address"=>"required",
             "experience"=>"required",
            // "photo"=>"required |image",
             "salary"=>"required",
-            "vacation"=>"required",
+            "nid"=>"required",
+            /*"vacation"=>"required",*/
             "city"=>"required",
-            "joining"=>"required",
-            "leave"=>"required"
+/*          "joining"=>"required",
+            "leave"=>"required"*/
         ]);
         /*$image = $request->file('photo');
         $slug =  Str::slug($request->input('name'));
@@ -114,9 +121,11 @@ class EmployeeController extends Controller
             }
             $postImage = Image::make($image)->resize(1600, 1066)->stream();
             Storage::disk('public')->put('employee/'.$imageName, $postImage,'public');
-        } else
-        {
-            $imageName = 'default.png';
+
+            if (!Storage::disk('public/employee')->exists( $employee->photo))
+            {
+                Storage::delete('/public/employee' . $employee->photo);
+            }
         }*/
 
 /*        $employee = new Employee();
@@ -132,6 +141,7 @@ class EmployeeController extends Controller
         $employee->leave = $request->input('leave');
         $employee->photo = $request->input('photo');*/
         //echo $employee;
+        //$employee->photo = $imageName;
         $employee->update($request->all());
         return redirect()->route('employee.index')->with('success','Employee information updated successfully');
 

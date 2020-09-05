@@ -17,6 +17,12 @@
     </div>
 
     <div class="row">
+
+        {{--<div class="col-xs-12 col-sm-12 col-md-12">
+            <img class="img-rounded" style="height:100px; width: 100px;" src="{{ URL::asset("storage/employee/".$employee->photo) }}" alt="{{ $employee->name }}">
+
+        </div>--}}
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
@@ -48,11 +54,6 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>vacation:</strong>
-                {{ $employee->vacation }}
-            </div>
-        </div><div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
                 <strong>city:</strong>
                 {{ $employee->city }}
             </div>
@@ -60,17 +61,28 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>joining:</strong>
-                {{ $employee->joining }}
+                {{ $employee->joining_date }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>leave:</strong>
-                {{ $employee->leave }}
+                {{ $employee->leave_date }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Created At:</strong>
+                {{ $employee->created_at }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Updated At:</strong>
+                {{ $employee->updated_at }}
             </div>
         </div>
         </div>
-    </div>
     </div>
 </div>
 </div>

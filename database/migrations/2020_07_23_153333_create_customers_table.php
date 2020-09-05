@@ -22,7 +22,6 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->string('city')->nullable();
             $table->string('shop_name')->nullable();
-            $table->string('photo')->nullable();
             $table->string('nid_no')->nullable();
             $table->string('account_holder')->nullable();
             $table->string('account_number')->nullable();

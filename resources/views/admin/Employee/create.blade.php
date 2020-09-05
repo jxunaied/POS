@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Email">
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
@@ -65,21 +65,17 @@
                                         <input type="text" name="salary" class="form-control" placeholder="Salary" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Assigned Vacation</label>
-                                        <input type="text" name="vacation" class="form-control" placeholder="Vacation" required>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Join Date</label>
-                                        <input type="text" name="joining" class="form-control" placeholder="Join Date" required>
+                                        <input type="text" name="joining_date" class="form-control" placeholder="Join Date">
                                     </div>
                                     <div class="form-group">
                                         <label>Leave Date</label>
-                                        <input type="text" name="leave" class="form-control" placeholder="Leave Date">
+                                        <input type="text" name="leave_date" class="form-control" placeholder="Leave Date">
                                     </div>
-                                    <div class="form-group">
+                                   {{-- <div class="form-group">
                                         <label>Employee Photo</label>
                                         <input type="file" name="photo" accept="image/*" class="upload" required>
-                                    </div>
+                                    </div>--}}
                                     <button type="submit" class="btn btn-purple waves-effect waves-light">Add Employee</button>
                                 </form>
                             </div><!-- panel-body -->
