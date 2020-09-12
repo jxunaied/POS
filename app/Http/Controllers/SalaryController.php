@@ -19,10 +19,6 @@ class SalaryController extends Controller
     public function index()
     {
         $salarys = Salary::latest()->paginate(12);
-        /*foreach($salarys as $value) {
-        $employees= Employee::where('id', $value->employee_id);
-        array_push($array, $employees->name);
-        }*/
         return view('admin.salary.index', compact('salarys'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -42,15 +38,22 @@ class SalaryController extends Controller
             "paid_amount"=>"required",
             
         ]);
-        $salary = new Salary();
-        $salary->employee_id = $request->input('employee_id');
-        $salary->salary_month = $request->input('salary_month');
-        $salary->salary_year = $request->input('salary_year');
-        $salary->paid_amount = $request->input('paid_amount');
-        $salary->save();
+        $check_salary = Salary::where('employee_id', $request->employee_id)->where('salary_month', $request->salary_month)->where('salary_year', $request->salary_year)->first();
 
-        return redirect()->route('salary.index')
-            ->with('success','Salary given successfully.');
+        if (!$check_salary)
+        {
+            $salary = new Salary();
+            $salary->employee_id = $request->input('employee_id');
+            $salary->salary_month = $request->input('salary_month');
+            $salary->salary_year = $request->input('salary_year');
+            $salary->paid_amount = $request->input('paid_amount');
+            $salary->save();
+
+            return redirect()->route('salary.index')
+                ->with('success','Salary given successfully.');
+        } else {
+            return redirect()->route('salary.create')->with('error','Salary already paid for the employee');
+        }
 
     }
 
@@ -66,15 +69,23 @@ class SalaryController extends Controller
 
     public function update(Request $request, Salary $salary)
     {
-       $request->validate([
-            "name"=>"required | min:3",
-            "parentid"=>"required",
+        $request->validate([
+            "employee_id"=>"required",
+            "salary_month"=>"required",
+            "salary_year"=>"required",
+            "paid_amount"=>"required",
+
         ]);
 
+        /*print_r( $request->all());*/
+        $salary->employee_id = $request['employee_id'];
+        $salary->salary_month = $request['salary_month'];
+        $salary->salary_year = $request['salary_year'];
+        $salary->paid_amount = $request['paid_amount'];
+        $salary->update();
 
-        
-        $salary->update($request->all());
-        return redirect()->route('salary.index')->with('success','Salary information updated successfully');
+        return redirect()->route('salary.index')
+            ->with('success','Salary Updated successfully.');
 
     }
 
@@ -85,5 +96,38 @@ class SalaryController extends Controller
         return redirect()->route('salary.index')
             ->with('success','Salary information deleted successfully');
 
+    }
+
+    public function salary_filter(Request $request)
+    {
+        $month = $request['month'];
+        $year = $request['year'];
+        if ($month != null && $year != null)
+        {
+            $salaries = Salary::latest()->where('salary_month', $month)->where('salary_year', $year)->get();
+            return view('admin.salary.month', compact('salaries', 'month'));
+        } else if ($month == null && $year != null){
+            $salaries = Salary::latest()->where('salary_year', $year)->get();
+            return view('admin.Salary.month', compact('salaries', 'month'));
+        } else if ($month != null && $year == null){
+            $salaries = Salary::latest()->where('salary_month', $month)->get();
+            return view('admin.salary.month', compact('salaries', 'month'));
+        }
+
+        return '';
+    }
+    public function salaryYear()
+    {
+        $year = date('Y');
+        $salaries = Salary::latest()->where('salary_year', $year)->get();
+        return view('admin.salary.month', compact('salaries'));
+    }
+
+    public function salaryMonth()
+    {
+        $month = date('F');
+        $year= date('Y');
+        $salaries = Salary::latest()->where('salary_month', $month)->where('salary_year', $year)->get();
+        return view('admin.salary.month', compact('salaries', 'month'));
     }
 }

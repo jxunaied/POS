@@ -24,9 +24,9 @@ class CreateCoilsTable extends Migration
             $table->float('total_amount');
             $table->unsignedBigInteger('supplier_id');
             $table->string('place_name');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->string('purchase_date');
-            $table->foreign('supplier_id')->references('id')->on('supplier')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
             $table->timestamps();
         });
     }

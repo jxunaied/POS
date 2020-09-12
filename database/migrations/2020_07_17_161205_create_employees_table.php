@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email')->default('not_available@example.com');
+            $table->string('email')->nullable();
             $table->string('phone');
             $table->string('address');
             $table->string('city');

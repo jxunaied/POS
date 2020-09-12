@@ -18,7 +18,7 @@ class CreatePaymentMilPartiesTable extends Migration
             $table->unsignedBigInteger('mil_party_id');
             $table->string('payment_date');
             $table->float('amount');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->foreign('mil_party_id')->references('id')->on('mil_parties')->onDelete('cascade');
             $table->timestamps();
         });

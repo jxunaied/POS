@@ -16,8 +16,8 @@ class CreateLandOwnersTable extends Migration
         Schema::create('land_owners', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->float('balance', 10, 0)->default(0)->unsigned();
             $table->float('due', 10, 0)->default(0)->unsigned();
-            $table->float('payable', 10, 0)->default(0)->unsigned();
             $table->timestamps();
         });
     }

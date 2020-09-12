@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" >
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
@@ -57,40 +57,24 @@
                                         <input type="text" name="city" class="form-control" placeholder="City" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>type</label>
-                                        <input type="text" name="type" class="form-control" placeholder="type" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>shop name</label>
+                                        <label>Shop name</label>
                                         <input type="text" name="shop_name" class="form-control" placeholder="shop_name" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>account holder</label>
-                                        <input type="text" name="account_holder" class="form-control" placeholder="account_holder" required>
+                                        <label>Account Holder</label>
+                                        <input type="text" name="account_holder" class="form-control" placeholder="account_holder" >
                                     </div>
                                     <div class="form-group">
-                                        <label>account number</label>
-                                        <input type="text" name="account_number" class="form-control" placeholder="account_number" required>
+                                        <label>Account Number</label>
+                                        <input type="text" name="account_number" class="form-control" placeholder="account_number" >
                                     </div>
                                     <div class="form-group">
-                                        <label>bank name</label>
+                                        <label>Bank Name</label>
                                         <input type="text" name="bank_name" class="form-control" placeholder="bank_name">
                                     </div>
                                     <div class="form-group">
-                                        <label>bank branch</label>
-                                        <input type="text" name="bank_branch" class="form-control" placeholder="bank_branch" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>balance</label>
-                                        <input type="text" name="balance" class="form-control" placeholder="balance" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>due</label>
-                                        <input type="text" name="due" class="form-control" placeholder="due" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>supplier Photo</label>
-                                        <input type="file" name="photo" accept="image/*" class="upload" required>
+                                        <label>Bank Branch</label>
+                                        <input type="text" name="bank_branch" class="form-control" placeholder="bank_branch" >
                                     </div>
                                     <button type="submit" class="btn btn-purple waves-effect waves-light">Add supplier</button>
                                 </form>

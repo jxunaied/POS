@@ -17,11 +17,9 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->float('price');
-            $table->unsignedBigInteger('supplier_id');
             $table->unsignedBigInteger('category_id');
             $table->integer('quantity_available');
             $table->string('unit_name');
-            $table->foreign('supplier_id')->references('id')->on('supplier')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('cascade');
             $table->timestamps();
         });

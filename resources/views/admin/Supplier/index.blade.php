@@ -35,39 +35,25 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>No</th>
-                        <th>photo</th>
-                        <th>name</th>
-                        <th>email</th>
-                        <th>phone</th>
-                        <th>address</th>
-                        <th>city</th>
-                        <th>type</th>
-                        <th>shop_name</th>
-                        <th>account_holder</th>
-                        <th>account_number</th>
-                        <th>bank_name</th>
-                        <th>bank_branch</th>
-                        <th>balance</th>
-                        <th>due</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Shop Name</th>
+                        <th>Balance</th>
+                        <th>Due</th>
                         <th width="280px">Action</th>
                     </tr>
                     @foreach ($suppliers as $supplier)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>
-                                <img class="img-rounded" style="height:35px; width: 35px;" src="{{ URL::asset("storage/supplier/".$supplier->photo) }}" alt="{{ $supplier->name }}">
-                            </td>
                             <td>{{ $supplier->name }}</td>
                             <td>{{ $supplier->email }}</td>
                             <td>{{ $supplier->phone }}</td>
                             <td>{{ $supplier->address }}</td>
                             <td>{{ $supplier->city }}</td>
-                            <td>{{ $supplier->type }}</td>
                             <td>{{ $supplier->shop_name }}</td>
-                            <td>{{ $supplier->account_holder }}</td>
-                            <td>{{ $supplier->account_number }}</td>
-                            <td>{{ $supplier->bank_name }}</td>
-                            <td>{{ $supplier->bank_branch }}</td>
                             <td>{{ $supplier->balance }}</td>
                             <td>{{ $supplier->due }}</td>
                             <td>

@@ -18,7 +18,7 @@ class CreatePaymentSoilSordersTable extends Migration
             $table->unsignedBigInteger('soil_sorder_id');
             $table->string('payment_date');
             $table->float('pay_amount');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->foreign('soil_sorder_id')->references('id')->on('soil_sordars')->onDelete('cascade');
             $table->timestamps();
         });

@@ -19,7 +19,7 @@ class CreatePaymentLandOwnersTable extends Migration
             $table->string('payment_date');
             $table->string('year');
             $table->float('amount');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->foreign('land_owners_id')->references('id')->on('land_owners')->onDelete('cascade');
             $table->timestamps();
         });

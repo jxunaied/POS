@@ -21,6 +21,7 @@ class CreateCustomerDuesTable extends Migration
             $table->string('paid_date');
             $table->float('paid_amount');
             $table->float('current_due');
+            $table->string('remarks')->nullable();
             $table->foreign('invoice_no')->references('id')->on('sales')->onDelete('cascade');
             $table->foreign('cus_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();

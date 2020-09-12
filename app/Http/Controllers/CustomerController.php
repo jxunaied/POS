@@ -30,45 +30,25 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name"=>"required | min:3",
+            "name"=>"required",
             "phone"=>"required",
             "address"=>"required",
             
         ]);
-            $image = $request->file('photo');
-            $slug =  Str::slug($request->input('name'));
-            if ($request->hasFile('photo'))
-            {
-                $imageName = $slug.'-'.uniqid().$image->getClientOriginalExtension();
-                if (!Storage::disk('public')->exists('customer'))
-                {
-                    Storage::disk('public')->makeDirectory('customer');
-                }
-                $postImage = Image::make($image)->resize(1600, 1066)->stream();
-                Storage::disk('public')->put('customer/'.$imageName, $postImage,'public');
-            } else
-            {
-                $imageName = 'default.png';
-            }
         $customer = new Customer();
         $customer->name = $request->input('name');
         $customer->email = $request->input('email');
         $customer->phone = $request->input('phone');
         $customer->address = $request->input('address');
         $customer->city = $request->input('city');
-        $customer->shop_name = $request->input('shop_name');
-        $customer->nid_no = $request->input('nid_no');
         $customer->account_holder = $request->input('account_holder');
         $customer->account_number = $request->input('account_number');
         $customer->bank_name = $request->input('bank_name');
         $customer->bank_branch = $request->input('bank_branch');
-        $customer->balance = $request->input('balance');
-        $customer->due = $request->input('due');
-        $customer->photo = $imageName;
         $customer->save();
 
         return redirect()->route('customer.index')
-            ->with('success','customer added successfully.');
+            ->with('success','Customer added successfully.');
 
     }
 
@@ -85,20 +65,17 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
        $request->validate([
-            "name"=>"required | min:3",
-            "phone"=>"required",
-            "address"=>"required",
+            "name"      =>  "required",
+            "phone"     =>  "required",
+            "address"   =>  "required",
         ]);
 
-
-        $customer = new Customer();
         $customer->name = $request->input('name');
         $customer->email = $request->input('email');
         $customer->phone = $request->input('phone');
         $customer->address = $request->input('address');
         $customer->city = $request->input('city');
         $customer->shop_name = $request->input('shop_name');
-        $customer->photo = $request->input('photo');
         $customer->nid_no = $request->input('nid_no');
         $customer->account_holder = $request->input('account_holder');
         $customer->account_number = $request->input('account_number');
@@ -106,9 +83,8 @@ class CustomerController extends Controller
         $customer->bank_branch = $request->input('bank_branch');
         $customer->balance = $request->input('balance');
         $customer->due = $request->input('due');
-        //$customer->photo = $imageName;
-        $customer->update($request->all());
-        return redirect()->route('customer.index')->with('success','customer information updated successfully');
+        $customer->update();
+        return redirect()->route('customer.index')->with('success','Customer information updated successfully');
 
     }
 

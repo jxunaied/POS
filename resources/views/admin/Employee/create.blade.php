@@ -57,6 +57,10 @@
                                         <input type="text" name="city" class="form-control" placeholder="City" required>
                                     </div>
                                     <div class="form-group">
+                                        <label>NID</label>
+                                        <input type="number" name="nid" class="form-control" placeholder="NID" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Experience</label>
                                         <input type="text" name="experience" class="form-control" placeholder="Experience" required>
                                     </div>

@@ -18,7 +18,7 @@ class CreateLandOfUbsTable extends Migration
             $table->float('kata');
             $table->float('decimal');
             $table->unsignedBigInteger('land_owners_id');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->foreign('land_owners_id')->references('id')->on('land_owners')->onDelete('cascade');
             $table->timestamps();
         });

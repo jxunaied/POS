@@ -31,76 +31,63 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>phone:</strong>
+                <strong>Phone:</strong>
                 {{ $supplier->phone }}
             </div>
         </div><div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>address:</strong>
+                <strong>Address:</strong>
                 {{ $supplier->address }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>city:</strong>
+                <strong>City:</strong>
                 {{ $supplier->city }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>type:</strong>
-                {{ $supplier->type }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>shop_name:</strong>
+                <strong>Shop Name:</strong>
                 {{ $supplier->shop_name }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>account_holder:</strong>
+                <strong>Account Holder:</strong>
                 {{ $supplier->account_holder }}
             </div>
         </div>
-        </div><div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>account_number:</strong>
+                <strong>Account Number:</strong>
                 {{ $supplier->account_number }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>bank_name:</strong>
+                <strong>Bank Name:</strong>
                 {{ $supplier->bank_name }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>bank_branch:</strong>
+                <strong>Bank Branch:</strong>
                 {{ $supplier->bank_branch }}
             </div>
-        </div><div class="col-xs-12 col-sm-12 col-md-12">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>balance:</strong>
+                <strong>Balance:</strong>
                 {{ $supplier->balance }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>due:</strong>
+                <strong>Due:</strong>
                 {{ $supplier->due }}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>photo:</strong>
-                {{ $supplier->photo }}
-            </div>
-        </div>
-        </div>
-    </div>
     </div>
 </div>
 </div>

@@ -33,24 +33,16 @@
         @method('PUT')
 
         <div class="row">
-            {{--<div class="col-xs-12 col-sm-12 col-md-12">
-                <img class="img-rounded" style="height:100px; width: 100px;" src="{{ URL::asset("storage/employee/".$employee->photo) }}" alt="{{ $employee->name }}">
-
-            </div>
-            <div class="form-group">
-                <label>Update Employee Photo</label>
-                <input type="file" name="photo" accept="image/*" class="upload">
-            </div>--}}
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Name:</strong>
-                        <input type="text" name="name" value="{{ $employee->name }}" class="form-control" placeholder="Name">
+                        <input type="text" name="name" value="{{ $employee->name }}" class="form-control" placeholder="Name" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Email:</strong>
-                        <input type="email" name="email" value="{{ $employee->email }}"  class="form-control" placeholder="Email" required>
+                        <input type="email" name="email" value="{{ $employee->email }}"  class="form-control" placeholder="Email" >
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -63,6 +55,12 @@
                     <div class="form-group">
                         <strong>Address:</strong>
                         <input type="text" name="address" value="{{ $employee->address }}"  class="form-control" placeholder="Address" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>NID:</strong>
+                        <input type="number" name="nid" value="{{ $employee->nid }}"  class="form-control" placeholder="Experience" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -86,7 +84,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Join Date:</strong>
-                        <input type="text" name="joining_date" value="{{ $employee->joining }}"  class="form-control" placeholder="Join Date" required>
+                        <input type="text" name="joining_date" value="{{ $employee->joining }}"  class="form-control" placeholder="Join Date" >
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

@@ -27,40 +27,14 @@ class SupplierController extends Controller
 
     public function store(Request $request)
     {
-         {
+
         $request->validate([
             "name"=>"required | min:3",
-            "email"=>"required | email | unique:suppliers",
             "phone"=>"required",
             "address"=>"required",
             "city"=>"required",
-            "type"=>"required ",
-            "photo"=>"required",
             "shop_name"=>"required",
-            "account_holder"=>"required",
-            "account_number"=>"required",
-            "bank_name"=>"required",
-            "photo"=>"required",
-            "shop_name"=>"required",
-            "account_holder"=>"required",
-            "account_number"=>"required",
-            "bank_name"=>"required"
         ]);
-        $image = $request->file('photo');
-        $slug =  Str::slug($request->input('name'));
-        if ($request->hasFile('photo'))
-        {
-            $imageName = $slug.'-'.uniqid().$image->getClientOriginalExtension();
-            if (!Storage::disk('public')->exists('supplier'))
-            {
-                Storage::disk('public')->makeDirectory('supplier');
-            }
-            $postImage = Image::make($image)->resize(1600, 1066)->stream();
-            Storage::disk('public')->put('supplier/'.$imageName, $postImage,'public');
-        } else
-        {
-            $imageName = 'default.png';
-        }
 
         $supplier = new supplier();
         $supplier->name = $request->input('name');
@@ -68,22 +42,16 @@ class SupplierController extends Controller
         $supplier->phone = $request->input('phone');
         $supplier->address = $request->input('address');
         $supplier->city = $request->input('city');
-        $supplier->type = $request->input('type');
         $supplier->shop_name = $request->input('shop_name');
         $supplier->account_holder = $request->input('account_holder');
         $supplier->account_number = $request->input('account_number');
         $supplier->bank_name = $request->input('bank_name');
         $supplier->bank_branch = $request->input('bank_branch');
-        $supplier->photo = $request->input('photo');
-        $supplier->shop_name = $request->input('shop_name');
-        $supplier->balance = $request->input('balance');
-        $supplier->due = $request->input('due');
-        $supplier->photo = $imageName;
         $supplier->save();
         return redirect()->route('supplier.index')
             ->with('success','supplier added successfully.');
 
-    }
+
     }
 
     public function show(supplier $supplier)
@@ -98,31 +66,19 @@ class SupplierController extends Controller
 
     public function update(Request $request, Supplier $supplier)
     {
-        {
-       $request->validate([
+        $request->validate([
             "name"=>"required | min:3",
-            "email"=>"required | email ",
             "phone"=>"required",
             "address"=>"required",
             "city"=>"required",
-            "type"=>"required",
             "shop_name"=>"required",
-            "account_holder"=>"required",
-            "account_number"=>"required",
-            "bank_name"=>"required",
-            "bank_branch"=>"required",
-            "balance"=>"required",
-            "due"=>"required"
         ]);
-        
-        $supplier = new supplier();
+
         $supplier->name = $request->input('name');
         $supplier->email = $request->input('email');
         $supplier->phone = $request->input('phone');
         $supplier->address = $request->input('address');
         $supplier->city = $request->input('city');
-        $supplier->type = $request->input('type');
-        //$supplier->photo = $request->input('photo');
         $supplier->shop_name = $request->input('shop_name');
         $supplier->account_holder = $request->input('account_holder');
         $supplier->account_number = $request->input('account_number');
@@ -130,10 +86,8 @@ class SupplierController extends Controller
         $supplier->bank_branch = $request->input('bank_branch');
         $supplier->balance = $request->input('balance');
         $supplier->due = $request->input('due');
-        $supplier->save();
+        $supplier->update();
         return redirect()->route('supplier.index')->with('success','supplier information updated successfully');
-
-    }
     }
 
    

@@ -23,7 +23,7 @@ class CreateSandTable extends Migration
             $table->float('truck_fair');
             $table->float('total_amount');
             $table->string('place_name');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

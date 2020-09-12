@@ -7,79 +7,88 @@ use Illuminate\Http\Request;
 
 class CustomerDueController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $payment = CustomerDue::latest()->paginate(12);
+        return view('admin.Customerpayment.index', compact('payment'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.Customerpayment.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "invoice_no"=>"required",
+            "original_amount"=>"required",
+            "cus_id"=>"required",
+            "paid_date"=>"required",
+            "paid_amount"=>"required",
+            "current_due"=>"required",
+        ]);
+        $customer = new CustomerDue();
+        $customer->invoice_no = $request->input('invoice_no');
+        $customer->original_amount = $request->input('original_amount');
+        $customer->cus_id = $request->input('cus_id');
+        $customer->paid_date = $request->input('paid_date');
+        $customer->paid_amount = $request->input('paid_amount');
+        $customer->current_due = $request->input('current_due');
+        /*$customer->remarks = $request->input('remarks');*/
+        $customer->save();
+
+        return redirect()->route('customer-payment.index')
+            ->with('success','Payment added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\CustomerDue  $customerDue
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CustomerDue $customerDue)
+    public function show(CustomerDue $customer)
     {
-        //
+        return view('admin.Customerpayment.show', compact('customer'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\CustomerDue  $customerDue
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CustomerDue $customerDue)
+    public function edit(CustomerDue $customer)
     {
-        //
+        return view('admin.Customerpayment.edit',compact('customer'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CustomerDue  $customerDue
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CustomerDue $customerDue)
+    public function update(Request $request, CustomerDue $customer)
     {
-        //
+        $request->validate([
+            "invoice_no"=>"required",
+            "original_amount"=>"required",
+            "cus_id"=>"required",
+            "paid_date"=>"required",
+            "paid_amount"=>"required",
+            "current_due"=>"required",
+        ]);
+
+        $customer->invoice_no = $request->input('invoice_no');
+        $customer->original_amount = $request->input('original_amount');
+        $customer->cus_id = $request->input('cus_id');
+        $customer->paid_date = $request->input('paid_date');
+        $customer->paid_amount = $request->input('paid_amount');
+        $customer->current_due = $request->input('current_due');
+        /*$customer->remarks = $request->input('remarks');*/
+        $customer->update();
+
+        return redirect()->route('Customerpayment.index')->with('success','Payment information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\CustomerDue  $customerDue
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CustomerDue $customerDue)
+
+    public function destroy(CustomerDue $customer)
     {
-        //
+        $customer->delete();
+        return redirect()->route('Customerpayment.index')
+            ->with('success','Payment information deleted successfully');
+
     }
 }

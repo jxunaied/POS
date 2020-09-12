@@ -21,7 +21,7 @@ class CreateExpensesTable extends Migration
             $table->string('month');
             $table->string('year');
             $table->string('date');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->foreign('category_id')->references('id')->on('expense_categories')->onDelete('cascade');
             $table->timestamps();
         });

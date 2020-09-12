@@ -22,8 +22,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('employee', 'EmployeeController');
+Route::get('salary-filter/{month?}/{year?}', 'SalaryController@salary_filter')->name('salary.filter');
+Route::get('salary/month', 'SalaryController@salaryMonth')->name('salary.month');
+Route::get('salary/year', 'SalaryController@salaryYear')->name('salary.year');
+
 Route::resource('supplier', 'SupplierController');
 Route::resource('customer', 'CustomerController');
+Route::resource('customer-payment', 'CustomerDueController');
 Route::resource('productcategory', 'ProductCategoryController');
 Route::resource('expense', 'ExpenseController');
 Route::resource('expensecategory', 'ExpenseCategoryController');

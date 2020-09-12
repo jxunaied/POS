@@ -163,28 +163,7 @@
                                 <a href="{{ route('employee.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Employees </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('employee.index') }}">All Employee</a></li>
-                                    <li><a href="{{ route('employee.create') }}">Add New Employee</a></li>
-                                </ul>
-                            </li>
-                            <li class="has_sub">
-                                <a href="{{ route('customer.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Customers </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ route('customer.index') }}">All Customer</a></li>
-                                    <li><a href="{{ route('customer.create') }}">Add New Customer</a></li>
-                                </ul>
-                            </li>
-                            <li class="has_sub">
-                                <a href="{{ route('expensecategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense Category</span><span class="pull-right"><i class="md md-add"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ route('expensecategory.index') }}">All Expense Category</a></li>
-                                    <li><a href="{{ route('expensecategory.create') }}">Add New Expense Category</a></li>
-                                </ul>
-                            </li>
-                            <li class="has_sub">
-                                <a href="{{ route('expense.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="{{ route('expense.index') }}">All Expense</a></li>
-                                    <li><a href="{{ route('expense.create') }}">Add New Expense</a></li>
+                                    <li><a href="{{ route('salary.index') }}">Employee Salary</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
@@ -195,18 +174,69 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="{{ route('productcategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Products Category </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="{{ route('customer.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Customers </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ route('productcategory.index') }}">All Category</a></li>
-                                    <li><a href="{{ route('productcategory.create') }}">Add New Category</a></li>
+                                    <li><a href="{{ route('customer.index') }}">All Customer</a></li>
+                                    <li><a href="{{ route('customer.create') }}">Add New Customer</a></li>
+                                    <li><a href="{{ route('customer-payment.index') }}">Customer Dues Payment</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-
-                                <a href="{{ route('expense.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Cash Deposit</span></a>
+                            </li>
+                            <li class="has_sub">
+                                <a href="{{ route('expensecategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="{{ route('expense.index') }}">All Expense</a></li>
-                                    <li><a href="{{ route('expense.create') }}">Add New Expense</a></li>
+                                    <li><a href="{{ route('expensecategory.index') }}">Expense Category</a></li>
+                                    <li><a href="{{ route('expensecategory.create') }}">All Expense</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="{{ route('productcategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span>Products</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('productcategory.index') }}">Products Category</a></li>
+                                    <li><a href="{{ route('productcategory.create') }}">All Products</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Sales</span></a>
+                            </li>
+                            <li class="has_sub">
+                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Mati</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="">Soil Sorder</a></li>
+                                    <li><a href="">Mati</a></li>
+                                    <li><a href="">Payment</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Coal</span></a>
+                            </li>
+                            <li class="has_sub">
+                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Sand</span></a>
+                            </li>
+                            <li class="has_sub">
+                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Land Of UB</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="">Land Owners</a></li>
+                                    <li><a href="">Land</a></li>
+                                    <li><a href="">Payment</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Bricks</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="">Mil Parties</a></li>
+                                    <li><a href="">Making Bricks</a></li>
+                                    <li><a href="">Payment</a></li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Diesel</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="">Diesel Mils</a></li>
+                                    <li><a href="">Diesel Inventory</a></li>
+                                    <li><a href="">Uses</a></li>
                                 </ul>
                             </li>
                         </ul>

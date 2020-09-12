@@ -54,6 +54,12 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                <strong>Salary:</strong>
+                {{ $employee->salary }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
                 <strong>city:</strong>
                 {{ $employee->city }}
             </div>
@@ -73,13 +79,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Created At:</strong>
-                {{ $employee->created_at }}
+                {{ $employee->created_at->format('d/m/Y') }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Updated At:</strong>
-                {{ $employee->updated_at }}
+                {{ $employee->updated_at->format('d/m/Y') }}
             </div>
         </div>
         </div>

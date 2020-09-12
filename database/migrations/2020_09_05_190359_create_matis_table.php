@@ -20,7 +20,7 @@ class CreateMatisTable extends Migration
             $table->float('total_cft');
             $table->float('rate');
             $table->float('amount');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->foreign('soil_sorder_id')->references('id')->on('soil_sordars')->onDelete('cascade');
             $table->timestamps();
         });
