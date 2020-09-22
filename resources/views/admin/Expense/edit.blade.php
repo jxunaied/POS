@@ -38,23 +38,40 @@
                     <strong>Name:</strong>
                     <input type="text" name="name" value="{{ $expense->name }}" class="form-control" placeholder="Name">
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>category_id:</strong>
-                        <input type="email" name="category_id" value="{{ $expense->category_id }}"  class="form-control" placeholder="category_id" required>
+                        <strong>Category Name:</strong>
+                        <select name="category_id" class="form-control">
+                            <option value="" disabled selected>Select a Category</option>
+                            @foreach($categories as $category)
+                                @if($category->id == $expense->category_id)
+                                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                @else
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                  @endif
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>amount:</strong>
+                        <strong>Amount: </strong>
                         <input type="number" name="amount" value="{{ $expense->amount }}"  class="form-control" placeholder="amount" required>
                     </div>
-                </div>                
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date" value="{{ $expense->date }}" accept="form-control" class="Date">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>remarks:</strong>
                         <input type="text" name="remarks" value="{{ $expense->remarks }}"  class="form-control" placeholder="remarks">
                     </div>
+                </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

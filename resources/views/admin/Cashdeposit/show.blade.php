@@ -8,10 +8,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Show ProductCategory Information</h2>
+                <h2> Show expensecategory Information</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('productcategory.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('expensecategory.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -20,13 +20,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>parentId:</strong>
-                {{ $productcategory->parentid }}
+                {{ $expensecategory->parentid }}
             </div>
         </div>       
         </div><div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>name:</strong>
-                {{ $productcategory->name }}
+                {{ $expensecategory->name }}
             </div>
         </div>
         </div>

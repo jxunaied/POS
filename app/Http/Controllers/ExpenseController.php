@@ -37,11 +37,11 @@ class ExpenseController extends Controller
             "name"=>"required",
             "category_id"=>"required",
             "amount"=>"required",
-            "remarks"=>"required",
             
         ]);
 
-        $date = Carbon::now();
+        /*$date = Carbon::now();*/
+        $date =  Carbon::createFromFormat('Y-m-d', $request->input('date'));
         $expense = new Expense();
         $expense->name = $request->input('name');
         $expense->category_id = $request->input('category_id');
@@ -64,23 +64,28 @@ class ExpenseController extends Controller
 
     public function edit(Expense $expense)
     {
-        return view('admin.expense.edit',compact('expense'));
+        $categories = ExpenseCategory::all();
+        return view('admin.expense.edit',compact('expense', 'categories'));
     }
 
     public function update(Request $request, Expense $expense)
     {
        $request->validate([
-            "name"=>"required | min:3",
-            "parentid"=>"required",
+            "name"          =>  "required",
+            "category_id"   =>  "required",
+            "amount"        =>  "required",
         ]);
 
+        $date =  Carbon::createFromFormat('Y-m-d', $request->input('date'));
 
-        $expense = new Expense();
         $expense->name = $request->input('name');
         $expense->category_id = $request->input('category_id');
+        $expense->month = $date->format('F');
+        $expense->year = $date->format('Y');
+        $expense->date = $date->format('Y-m-d');
         $expense->amount = $request->input('amount');
         $expense->remarks = $request->input('remarks');
-        $expense->save();
+        $expense->update();
         return redirect()->route('expense.index')->with('success','Expense information updated successfully');
 
     }
@@ -103,48 +108,47 @@ class ExpenseController extends Controller
 
     }
 
-    public function month_expense($month = null)
+    public function expense_filter(Request $request)
     {
-        if ($month == null)
-        {
-            $month = date('F');
-        }
-        $expenses = Expense::latest()->where('month', $month)->get();
-        return view('admin.expense.month', compact('expenses', 'month'));
-    }
+        $month = $request['month'];
+        $year = $request['year'];
+        $date = $request['date'];
 
-    public function yearly_expense($year = null)
-    {
-        if ($year == null)
+        if ($month == null && $year == null && $date == null)
         {
-            $year = date('Y');
+            $date = date('Y-m-d');
+            $expenses = Expense::latest()->whereDate('date',$date )->get();
+            return view('admin.expense.month', compact('expenses'));
+        } else if ($date != null){
+            $expenses = Expense::latest()->whereDate('date', $date)->get();
+            return view('admin.expense.month', compact('expenses'));
+        } else if ($month != null && $date == null){
+            if( $year == null){
+                $year = date('Y');
+            }
+            $expenses = Expense::latest()->whereMonth('date', $month)->whereYear('date', $year)->get();
+            return view('admin.expense.month', compact('expenses'));
+        } else if ( $month == null && $year != null && $date == null) {
+            $expenses = Expense::latest()->whereYear('date', $year)->get();
+            return view('admin.expense.month', compact('expenses'));
         }
+
+        return '';
+    }
+    public function expense_year()
+    {
+        $year = date('Y');
         $expenses = Expense::latest()->where('year', $year)->get();
-        $years = Expense::select('year')->distinct()->take(12)->get();
-        return view('admin.expense.year', compact('expenses', 'year', 'years'));
+        return view('admin.expense.month', compact('expenses'));
     }
 
-    public function yearly_expense_monthly($month = null, $year = null)
+    public function expenseMonth()
     {
-        if ($year == null)
-        {
-            $year = date('Y');
-        }
-        if ($month == null)
-        {
-            $month = date('F');
-        }
-        $expenses = Expense::latest()->where('year', $year)->where('month', $month)->get();
-        $years = Expense::select('year')->distinct()->take(12)->get();
-        return view('admin.expense.year', compact('expenses', 'year', 'years'));
+        $month = date('m');
+        $year = date('Y');
+        $expenses = Expense::latest()->whereMonth('date', $month)->where('year', $year)->get();
+        return view('admin.expense.month', compact('expenses'));
     }
 
-    public function yearly_expense_monthly_date(Request $request)
-    {
-        $date = $request->date;
 
-        $expenses = Expense::latest()->where('date', $date)->get();
-        $years = Expense::select('year')->distinct()->take(12)->get();
-        return view('admin.expense.year', compact('expenses'));
-    }
 }

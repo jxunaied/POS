@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductCategory extends Model
+class CashDeposit extends Model
 {
     protected $fillable = [
-         'name',
+        'deposit_date', 'from', 'to', 'amount'
     ];
 }

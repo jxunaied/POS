@@ -35,7 +35,6 @@ class ExpenseCategoryController extends Controller
             
         ]);
         $expensecategory = new ExpenseCategory();
-        $expensecategory->parent_id = 0;
         $expensecategory->name = $request->input('name');
         $expensecategory->save();
 
@@ -57,15 +56,11 @@ class ExpenseCategoryController extends Controller
     public function update(Request $request, ExpenseCategory $expensecategory)
     {
        $request->validate([
-            "name"=>"required | min:3",
-            "parent_id"=>"required",
+            "name"=>"required",
         ]);
 
-
-        /*$ExpenseCategory = new ExpenseCategory();
-        $ExpenseCategory->name = $request->input('name');
-        $ExpenseCategory->parent_id = $request->input('parent_id');*/
-        $expensecategory->update($request->all());
+        $expensecategory->name = $request->input('name');
+        $expensecategory->update();
         return redirect()->route('expensecategory.index')->with('success','ExpenseCategory information updated successfully');
 
     }

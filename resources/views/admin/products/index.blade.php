@@ -9,19 +9,19 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">ProductCategorys Information</h4>
+                        <h4 class="pull-left page-title">Products Information</h4>
                         <ol class="breadcrumb pull-right">
-                            <li class="active">ProductCategory</li>
+                            <li class="active">products</li>
                         </ol>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>All ProductCategory Information</h2>
+                            <h2>All Product Information</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-success" href="{{ route('productcategory.create') }}"> Create New ProductCategory</a>
+                            <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
                         </div>
                     </div>
                 </div>
@@ -32,20 +32,30 @@
                     </div>
                 @endif
 
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Products LISTS
+                    </h3>
+                </div>
                 <table class="table table-bordered">
                     <tr>
-                        <th>No.</th>
+                        <th>Serial</th>
                         <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Inventory</th>
                         <th width="200px">Action</th>
                     </tr>
-                    @foreach ($productcategorys as $productcategory)
+                    @foreach ($products as $product)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $productcategory->name }}</td>
-
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->categoryName->name }}</td>
+                            <td>{{ number_format($product->price, 2) }}</td>
+                            <td>{{ $product->quantity_available}} {{$product->unit_name}}</td>
                             <td>
-                                <form action="{{ route('productcategory.destroy',$productcategory->id) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('productcategory.edit',$productcategory->id) }}">Edit</a>
+                                <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                    <a class="btn btn-primary" href="{{ route('products.edit', $product) }}">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -58,6 +68,6 @@
         </div>
     </div>
 
-    {!! $productcategorys->links() !!}
+    {!! $products->links() !!}
 
 @endsection

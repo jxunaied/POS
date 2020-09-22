@@ -31,11 +31,9 @@ class ProductCategoryController extends Controller
     {
         $request->validate([
             "name"=>"required",
-            "parentid"=>"required",
             
         ]);
         $productcategory = new ProductCategory();
-        $productcategory->parentid = $request->input('parentid');
         $productcategory->name = $request->input('name');
         $productcategory->save();
 
@@ -57,23 +55,17 @@ class ProductCategoryController extends Controller
     public function update(Request $request, ProductCategory $productcategory)
     {
        $request->validate([
-            "name"=>"required | min:3",
-            "parentid"=>"required",
+            "name"=>"required",
         ]);
-
-
-        
         $productcategory->update($request->all());
         return redirect()->route('productcategory.index')->with('success','ProductCategory information updated successfully');
 
     }
-
 
     public function destroy(ProductCategory $productcategory)
     {
         $productcategory->delete();
         return redirect()->route('productcategory.index')
             ->with('success','ProductCategory information deleted successfully');
-
     }
 }

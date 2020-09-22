@@ -182,20 +182,24 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Cash Deposit</span></a>
+                                <a href="{{ route('cashdeposit.create') }}" class="waves-effect"><i class="md md-mail"></i><span>Cash Deposit</span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('cashdeposit.index') }}">Cash Deposit</a></li>
+                                    <li><a href="{{ route('cashdeposit.create') }}">Add Cash</a></li>
+                                </ul>
                             </li>
                             <li class="has_sub">
                                 <a href="{{ route('expensecategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('expensecategory.index') }}">Expense Category</a></li>
-                                    <li><a href="{{ route('expensecategory.create') }}">All Expense</a></li>
+                                    <li><a href="{{ route('expense.index') }}">All Expense</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
                                 <a href="{{ route('productcategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span>Products</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('productcategory.index') }}">Products Category</a></li>
-                                    <li><a href="{{ route('productcategory.create') }}">All Products</a></li>
+                                    <li><a href="{{ route('products.index') }}">All Products</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">

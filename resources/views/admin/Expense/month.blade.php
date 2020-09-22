@@ -41,36 +41,26 @@
 
                 <table class="table table-bordered">
                     <tr>
-                        <th>Serial</th>
                         <th>Expense Title</th>
                         <th>Expense Type</th>
                         <th>Amount</th>
-                        <th>Month</th>
-                        <th>Year</th>
                         <th>Date</th>
                         <th>remarks</th>
 
-                        <th width="280px">Action</th>
+                        <th width="200px">Action</th>
                     </tr>
                     @foreach ($expenses as $expense)
                         <tr>
-                            <td>{{ $i ?? '' }}</td>
                             <td>{{ $expense->name }}</td>
-                            <td>{{ $expense->category_id }}</td>
+                            <td>{{ $expense->categoryName->name }}</td>
                             <td>{{ number_format($expense->amount, 2) }}</td>
-                            <td>{{ $expense->month }}</td>
-                            <td>{{ $expense->year }}</td>
-                            <td>{{ $expense->created_at->format('d M Y h:i:s A') }}</td>
+                            <td>{{ $expense->date}}</td>
                             <td>{{ $expense->remarks }}</td>
                             <td>
                                 <form action="{{ route('expense.destroy',$expense->id) }}" method="POST">
-                                    <a class="btn btn-info" href="{{ route('expense.show',$expense->id) }}">Show</a>
-
                                     <a class="btn btn-primary" href="{{ route('expense.edit',$expense->id) }}">Edit</a>
-
                                     @csrf
                                     @method('DELETE')
-
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>

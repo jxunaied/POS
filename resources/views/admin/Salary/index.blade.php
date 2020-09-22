@@ -43,10 +43,10 @@
                                 </form>
                         </div>
                         <div class="pull-right mr-2">
-                            <a class="btn btn-success" href="{{ route('salary.month') }}">This Month</a>
+                            <a class="btn btn-success" href="{{ route('salaryMonth') }}">This Month</a>
                         </div>
                         <div class="pull-right mr-2">
-                            <a class="btn btn-success" href="{{ route('salary.year') }}">This Year</a>
+                            <a class="btn btn-success" href="{{ route('salaryYear') }}">This Year</a>
                         </div>
                         <div class="pull-right mr-2">
                             <a class="btn btn-success" href="{{ route('salary.create') }}"> Create New salary</a>

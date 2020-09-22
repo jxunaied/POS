@@ -18,23 +18,32 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('employee', 'EmployeeController');
+
+Route::resource('salary', 'SalaryController');
 Route::get('salary-filter/{month?}/{year?}', 'SalaryController@salary_filter')->name('salary.filter');
-Route::get('salary/month', 'SalaryController@salaryMonth')->name('salary.month');
-Route::get('salary/year', 'SalaryController@salaryYear')->name('salary.year');
+Route::get('salary-month', 'SalaryController@salary_month')->name('salaryMonth');
+Route::get('salary-year', 'SalaryController@salaryYear')->name('salaryYear');
 
 Route::resource('supplier', 'SupplierController');
 Route::resource('customer', 'CustomerController');
+
 Route::resource('customer-payment', 'CustomerDueController');
-Route::resource('productcategory', 'ProductCategoryController');
-Route::resource('expense', 'ExpenseController');
+
+Route::resource('cashdeposit', 'CashDepositController');
+Route::get('cashdeposit-filter/{date?}/{month?}/{year?}', 'CashDepositController@deposit_filter')->name('cashdeposit.filter');
+Route::get('cashdeposit-month', 'CashDepositController@depositMonth')->name('cashdeposit.month');
+Route::get('cashdeposit-year', 'CashDepositController@depositYear')->name('cashdeposit.year');
+
 Route::resource('expensecategory', 'ExpenseCategoryController');
-Route::get('expense-today', 'ExpenseController@today_expense')->name('expense.date');
-Route::get('expense-month/{month?}', 'ExpenseController@month_expense')->name('expense.month');
-//Route::get('expense-yearly/{year?}', 'ExpenseController@yearly_expense')->name('expense.year');
-//Route::get('expense-yearly/{month?}/{year?}', 'ExpenseController@yearly_expense_monthly')->name('expense.year');
-Route::get('expense-yearly/{date?}/{month?}/{year?}', 'ExpenseController@yearly_expense_monthly_date')->name('expense.year');
-Route::resource('salary', 'SalaryController');
+Route::resource('expense', 'ExpenseController');
+Route::get('expense-filter/{date?}/{month?}/{year?}', 'ExpenseController@expense_filter')->name('expense.filter');
+Route::get('expense-month', 'ExpenseController@expenseMonth')->name('expense.months');
+Route::get('expense-year', 'ExpenseController@expense_year')->name('expense.years');
+/*Route::get('expense-today', 'ExpenseController@today_expense')->name('expense.date');*/
+
+Route::resource('productcategory', 'ProductCategoryController');
+Route::resource('products', 'ProductController');
+

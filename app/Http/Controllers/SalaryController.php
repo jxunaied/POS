@@ -123,7 +123,7 @@ class SalaryController extends Controller
         return view('admin.salary.month', compact('salaries'));
     }
 
-    public function salaryMonth()
+    public function salary_month()
     {
         $month = date('F');
         $year= date('Y');

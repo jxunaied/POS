@@ -9,9 +9,9 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Add New Expense</h4>
+                        <h4 class="pull-left page-title">Cash Deposit</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="{{ route('expense.index') }}">expense</a></li>
+                            <li><a href="{{ route('salary.index') }}">deposit</a></li>
                             <li class="active">create</li>
                         </ol>
                     </div>
@@ -31,37 +31,37 @@
                                 </ul>
                             </div>
                         @endif
+                            @if ($message = Session::get('error'))
+                                <div class="alert alert-danger">
+                                    <p>{{ $message }}</p>
+                                </div>
+                            @endif
                         <div class="panel panel-default">
-                            <div class="panel-heading"><h3 class="panel-title">Expense Information</h3></div>
+                            <div class="panel-heading"><h3 class="panel-title">Cash Deposit Information</h3></div>
                             <div class="panel-body">
-                                <form action="{{ route('expense.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('cashdeposit.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                        <label>Deposit Date</label>
+                                        <input type="date" name="deposit_date" class="form-control" placeholder="Date" >
                                     </div>
                                     <div class="form-group">
-                                        <label>Expense Category</label>
-                                        <select name="category_id" class="form-control">
-                                            <option value="" disabled selected>Select a Category</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <label>From</label>
+                                        <input type="text" name="from" class="form-control" placeholder="From" >
                                     </div>
                                     <div class="form-group">
-                                        <label>amount</label>
-                                        <input type="text" name="amount" class="form-control" placeholder="amount" required>
+                                        <label>To</label>
+                                        <input type="text" name="to" class="form-control" placeholder="to" >
+                                    </div>
+                                   <div class="form-group">
+                                        <label>Amount</label>
+                                        <input type="number" name="amount" class="form-control" placeholder="Amount" >
                                     </div>
                                     <div class="form-group">
-                                        <label>Date</label>
-                                        <input type="date" name="date" accept="form-control" class="Date">
+                                        <label>Remarks</label>
+                                        <input type="text" name="remarks" class="form-control" placeholder="Remarks" >
                                     </div>
-                                    <div class="form-group">
-                                        <label>remarks</label>
-                                        <input type="text" name="remarks" accept="form-control" class="remarks">
-                                    </div>
-                                    <button type="submit" class="btn btn-purple waves-effect waves-light">Add Expense</button>
+                                    <button type="submit" class="btn btn-purple waves-effect waves-light">Add</button>
                                 </form>
                             </div><!-- panel-body -->
                         </div> <!-- panel -->

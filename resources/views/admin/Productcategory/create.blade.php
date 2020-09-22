@@ -37,10 +37,6 @@
                                 <form action="{{ route('productcategory.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label>ParentId</label>
-                                        <input type="text" name="parentid" class="form-control" placeholder="ParentId" required>
-                                    </div>                                                                     
-                                    <div class="form-group">
                                         <label>Name</label>
                                         <input type="text" name="name" class="form-control" placeholder="Name" >
                                     </div>
