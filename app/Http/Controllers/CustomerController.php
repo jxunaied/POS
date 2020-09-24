@@ -47,7 +47,7 @@ class CustomerController extends Controller
         $customer->bank_branch = $request->input('bank_branch');
         $customer->save();
 
-        return redirect()->route('customer.index')
+        return redirect()->back()
             ->with('success','Customer added successfully.');
 
     }

@@ -158,7 +158,9 @@
                             <li>
                                 <a href="{{ route('home') }}" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
                             </li>
-
+                            <li>
+                                <a href="{{ route('pos') }}" class="waves-effect active"><i class="md md-home"></i><span> POS </span></a>
+                            </li>
                             <li class="has_sub">
                                 <a href="{{ route('employee.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Employees </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">

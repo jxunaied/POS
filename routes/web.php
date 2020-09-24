@@ -29,6 +29,7 @@ Route::get('salary-year', 'SalaryController@salaryYear')->name('salaryYear');
 
 Route::resource('supplier', 'SupplierController');
 Route::resource('customer', 'CustomerController');
+Route::post('/customer-create', 'CustomerController@store');
 
 Route::resource('customer-payment', 'CustomerDueController');
 
@@ -47,3 +48,8 @@ Route::get('expense-year', 'ExpenseController@expense_year')->name('expense.year
 Route::resource('productcategory', 'ProductCategoryController');
 Route::resource('products', 'ProductController');
 
+Route::get('/pos', 'PosController@index')->name('pos');
+Route::post('/cart-add', 'cartController@addcart');
+Route::post('/cart-update/{rowId}', 'cartController@updatecart');
+Route::get('/cart-remove/{rowId}', 'cartController@removecart');
+Route::get('/invoice', 'cartController@createInvoice');
