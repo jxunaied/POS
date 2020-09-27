@@ -204,8 +204,8 @@
                                     <li><a href="{{ route('products.index') }}">All Products</a></li>
                                 </ul>
                             </li>
-                            <li class="has_sub">
-                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Sales</span></a>
+                            <li >
+                                <a href="{{url('/sales')}}" class="waves-effect"><i class="md md-mail"></i><span>Sales</span></a>
                             </li>
                             <li class="has_sub">
                                 <a href="" class="waves-effect"><i class="md md-mail"></i><span>Mati</span><span class="pull-right"><i class="md md-add"></i></span></a>

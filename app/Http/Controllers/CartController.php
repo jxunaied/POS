@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Sale;
 use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,6 +54,47 @@ class CartController extends Controller
 
         $customer = DB::table('customers')->where('id', $cus_id)->first();
         $cartItems = Cart::content();
-        return view('admin.pos.invoice', compact('customer', 'cartItems'));
+        return view('admin.pos.invoice', compact('cartItems', 'customer'));
     }
+
+    public function createPayment(Request $request)
+    {
+
+/*        print_r($request->all());
+        exit();*/
+
+        $sale = array();
+        $sale['cus_id'] = $request->cus_id;
+        $sale['sales_date'] = $request->sales_date;
+        $sale['discount_amount'] = floatval($request->discount_amount);
+        $sale['total']= Cart::total();
+        $sale['sub_total'] = Cart::subtotal();
+        $sale['paid'] = floatval($request->paid);
+        $sale['due'] = floatval($request->due);
+        $sale['remarks'] = $request->remarks;
+        $sale['vat'] = Cart::tax();
+        $sale['created_at'] =new \DateTime();
+        $sale['updated_at'] =new \DateTime();
+        $sale['payment_status'] = $request->payment_type;
+
+        $chk = DB::table('sales')->insertGetId($sale);
+
+        $contents = Cart::content();
+        $order = array();
+        foreach ($contents as $content){
+            $order['sales_id'] = $chk;
+            $order['product_id'] = $content->id;
+            $order['quantity'] = $content->qty;
+            $order['price'] = $content->price;
+            $order['total'] = $content->total;
+            $order['created_at'] =new \DateTime();
+            $order['updated_at'] =new \DateTime();
+            DB::table('orders_details')->insert($order);
+        }
+
+        return redirect('/sales');
+
+    }
+
+
 }

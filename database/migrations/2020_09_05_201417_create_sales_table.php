@@ -15,17 +15,13 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('sales_date');
-            $table->unsignedBigInteger('product_id');
+            $table->string('sales_date');
             $table->unsignedBigInteger('cus_id');
-            $table->float('quantity');
-            $table->float('rate');
-            $table->float('discount_amount');
-            $table->float('total');
-            $table->float('paid');
-            $table->float('due');
+            $table->float('discount_amount', 10, 0)->unsigned();
+            $table->float('total',10, 0)->unsigned();
+            $table->float('paid',10, 0)->unsigned();
+            $table->float('due',10, 0)->unsigned();
             $table->string('remarks')->nullable();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('cus_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });

@@ -53,3 +53,7 @@ Route::post('/cart-add', 'cartController@addcart');
 Route::post('/cart-update/{rowId}', 'cartController@updatecart');
 Route::get('/cart-remove/{rowId}', 'cartController@removecart');
 Route::get('/invoice', 'cartController@createInvoice');
+Route::post('/create-payments', 'cartController@createPayment');
+Route::get('/sales', 'posController@orders');
+Route::delete('/delete-order/{id}', 'PosController@deleteOrders');
+Route::get('/sales-details/{id}', 'PosController@detailsOrders');
