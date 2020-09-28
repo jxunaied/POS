@@ -33,7 +33,6 @@ class CustomerController extends Controller
             "name"=>"required",
             "phone"=>"required",
             "address"=>"required",
-            
         ]);
         $customer = new Customer();
         $customer->name = $request->input('name');

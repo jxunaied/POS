@@ -42,7 +42,6 @@ class PosController extends Controller
     public function detailsOrders($id)
     {
         $orders = DB::table('sales')
-            ->join('customers', 'sales.cus_id', 'customers.id')
             ->where('sales.id', $id)
             ->first();
 

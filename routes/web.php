@@ -57,3 +57,8 @@ Route::post('/create-payments', 'cartController@createPayment');
 Route::get('/sales', 'posController@orders');
 Route::delete('/delete-order/{id}', 'PosController@deleteOrders');
 Route::get('/sales-details/{id}', 'PosController@detailsOrders');
+
+Route::resource('soilsorder', 'SoilSordarController');
+Route::resource('mati', 'MatiController');
+Route::resource('mati-payment', 'PaymentSoilSorderController');
+Route::resource('coal', 'CoilController');

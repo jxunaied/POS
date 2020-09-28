@@ -210,13 +210,13 @@
                             <li class="has_sub">
                                 <a href="" class="waves-effect"><i class="md md-mail"></i><span>Mati</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="">Soil Sorder</a></li>
-                                    <li><a href="">Mati</a></li>
-                                    <li><a href="">Payment</a></li>
+                                    <li><a href="{{route('soilsorder.index')}}">Soil Sorder</a></li>
+                                    <li><a href="{{route('mati.index')}}">Mati</a></li>
+                                    <li><a href="{{route('mati-payment.index')}}">Payment</a></li>
                                 </ul>
                             </li>
-                            <li class="has_sub">
-                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Coal</span></a>
+                            <li >
+                                <a href="{{route('coal.index')}}" class="waves-effect"><i class="md md-mail"></i><span>Coal</span></a>
                             </li>
                             <li class="has_sub">
                                 <a href="" class="waves-effect"><i class="md md-mail"></i><span>Sand</span></a>

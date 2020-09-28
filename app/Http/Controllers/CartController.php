@@ -67,12 +67,12 @@ class CartController extends Controller
         $sale['cus_id'] = $request->cus_id;
         $sale['sales_date'] = $request->sales_date;
         $sale['discount_amount'] = floatval($request->discount_amount);
-        $sale['total']= Cart::total();
-        $sale['sub_total'] = Cart::subtotal();
+        $sale['total']= floatval(preg_replace('/[^\d.]/', '', Cart::total()));
+        $sale['sub_total'] = floatval(preg_replace('/[^\d.]/', '', Cart::subtotal()));
         $sale['paid'] = floatval($request->paid);
         $sale['due'] = floatval($request->due);
         $sale['remarks'] = $request->remarks;
-        $sale['vat'] = Cart::tax();
+        $sale['vat'] = floatval(preg_replace('/[^\d.]/', '', Cart::tax()));
         $sale['created_at'] =new \DateTime();
         $sale['updated_at'] =new \DateTime();
         $sale['payment_status'] = $request->payment_type;

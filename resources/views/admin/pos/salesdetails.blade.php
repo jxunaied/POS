@@ -66,8 +66,8 @@
                                                     <td>{{ $i ++ }}</td>
                                                     <td>{{ $order->name }}</td>
                                                     <td>{{ $order->quantity}}</td>
-                                                    <td>{{ $order->price }}</td>
-                                                    <td>{{ $order->total}}</td>
+                                                    <td>{{ number_format((float)$order->price, 2, '.', '') }}</td>
+                                                    <td>{{ number_format((float)$order->total, 2, '.', '') }}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
@@ -78,14 +78,14 @@
                             <div class="row" style="border-radius: 0px;">
                                 <div class="col-md-3 pull-left">
                                     <h3 class="text-left">Payment:{{$orders->payment_status}}</h3>
-                                    <p class="text-left"><b>Paid: </b> {{$orders->paid}}</p>
-                                    <p class="text-left"><b>Due:  </b>{{$orders->due}}</p>
+                                    <p class="text-left"><b>Paid: </b> {{number_format($orders->paid, 2, '.', '')}}</p>
+                                    <p class="text-left"><b>Due:  </b>{{number_format((float)$orders->due, 2, '.', '')}}</p>
                                 </div>
                                 <div class="col-md-3 col-md-offset-9">
-                                    <p class="text-right"><b>Sub-total:</b> {{$orders->sub_total}}</p>
-                                    <p class="text-right">VAT: {{$orders->vat}}</p>
+                                    <p class="text-right"><b>Sub-total:</b> {{number_format((float)$orders->sub_total, 2, '.', '')}}</p>
+                                    <p class="text-right">VAT: {{number_format((float)$orders->vat, 2, '.', '')}}</p>
                                     <hr>
-                                    <h3 class="text-right">Taka {{$orders->total}}</h3>
+                                    <h3 class="text-right">Taka {{number_format((float)$orders->total, 2, '.', '')}}</h3>
                                 </div>
                             </div>
                             <hr>
