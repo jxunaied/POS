@@ -218,21 +218,21 @@
                             <li >
                                 <a href="{{route('coal.index')}}" class="waves-effect"><i class="md md-mail"></i><span>Coal</span></a>
                             </li>
-                            <li class="has_sub">
-                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Sand</span></a>
+                            <li >
+                                <a href="{{route('sand.index')}}" class="waves-effect"><i class="md md-mail"></i><span>Sand</span></a>
                             </li>
                             <li class="has_sub">
                                 <a href="" class="waves-effect"><i class="md md-mail"></i><span>Land Of UB</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="">Land Owners</a></li>
-                                    <li><a href="">Land</a></li>
-                                    <li><a href="">Payment</a></li>
+                                    <li><a href="{{route('landowner.index')}}">Land Owners</a></li>
+                                    <li><a href="{{route('land.index')}}">Land</a></li>
+                                    <li><a href="{{route('land-pay.index')}}">Payment</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
                                 <a href="" class="waves-effect"><i class="md md-mail"></i><span>Bricks</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="">Mil Parties</a></li>
+                                    <li><a href="{{route('milparty.index')}}">Mil Parties</a></li>
                                     <li><a href="">Making Bricks</a></li>
                                     <li><a href="">Payment</a></li>
                                 </ul>

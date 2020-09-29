@@ -7,79 +7,72 @@ use Illuminate\Http\Request;
 
 class MilPartyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $owners = MilParty::latest()->paginate(12);
+        return view('admin.milparty.index', compact('owners'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.milparty.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>"required",
+        ]);
+        $owner= new MilParty();
+        $owner->name = $request->input('name');
+        $owner->save();
+
+        return redirect()->back()
+            ->with('success','Information added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\MilParty  $milParty
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MilParty $milParty)
+    public function show(MilParty $owner)
     {
-        //
+        return view('admin.milparty.show', compact('owner'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\MilParty  $milParty
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MilParty $milParty)
+    public function edit($id)
     {
-        //
+        $owner = MilParty::latest()->where('id', $id)->get();
+        return view('admin.milparty.edit', compact('owner'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\MilParty  $milParty
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MilParty $milParty)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name"      =>  "required",
+            "balance"     =>  "required",
+            "due"   =>  "required",
+        ]);
+
+        $owner = MilParty::latest()->where('id', $id)->first();
+        $owner->name = $request->input('name');
+        $owner->balance = $request->input('balance');
+        $owner->due = $request->input('due');
+        $owner->update();
+        return redirect()->route('milparty.index')->with('success','Information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\MilParty  $milParty
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MilParty $milParty)
+
+    public function destroy($id)
     {
-        //
+        $owner = MilParty::latest()->where('id', $id)->first();
+        $owner->delete();
+        return redirect()->route('milparty.index')
+            ->with('success','Information deleted successfully');
+
     }
 }

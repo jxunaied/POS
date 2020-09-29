@@ -3,83 +3,83 @@
 namespace App\Http\Controllers;
 
 use App\LandOfUb;
+use App\LandOwner;
 use Illuminate\Http\Request;
 
 class LandOfUbController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $lands = LandOfUb::latest()->paginate(12);
+        return view('admin.land.index', compact('lands'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $owners = LandOwner::all();
+        return view('admin.land.create', compact('owners'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "land_owners_id"                  =>  "required",
+            "kata"           =>  "required",
+            "decimal"                 =>  "required",
+        ]);
+
+        $land = new LandOfUb();
+        $land->land_owners_id = $request->input('land_owners_id');
+        $land->kata = $request->input('kata');
+        $land->decimal = $request->input('decimal');
+        $land->remarks = $request->input('remarks');
+        $land->save();
+
+        return redirect()->route('land.index')
+            ->with('success','Information added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\LandOfUb  $landOfUb
-     * @return \Illuminate\Http\Response
-     */
-    public function show(LandOfUb $landOfUb)
+    public function show(LandOfUb $land)
     {
-        //
+        return view('admin.land.show', compact('land'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\LandOfUb  $landOfUb
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(LandOfUb $landOfUb)
+    public function edit(LandOfUb $land)
     {
-        //
+        $owners = LandOwner::all();
+        return view('admin.land.edit',compact('land', 'owners'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\LandOfUb  $landOfUb
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, LandOfUb $landOfUb)
+    public function update(Request $request, LandOfUb $land)
     {
-        //
+        $request->validate([
+            "land_owners_id"                  =>  "required",
+            "kata"           =>  "required",
+            "decimal"                 =>  "required",
+        ]);
+
+        $land->land_owners_id = $request->input('land_owners_id');
+        $land->kata = $request->input('kata');
+        $land->decimal = $request->input('decimal');
+        $land->remarks = $request->input('remarks');
+        $land->update();
+        return redirect()->route('land.index')->with('success','Information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\LandOfUb  $landOfUb
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(LandOfUb $landOfUb)
+    public function destroy(LandOfUb $land)
     {
-        //
+        $land->delete();
+        return redirect()->route('land.index')
+            ->with('success','Information deleted successfully');
+
     }
 }

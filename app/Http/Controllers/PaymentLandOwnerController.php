@@ -2,84 +2,91 @@
 
 namespace App\Http\Controllers;
 
+use App\LandOwner;
 use App\PaymentLandOwner;
 use Illuminate\Http\Request;
 
 class PaymentLandOwnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $payments = PaymentLandOwner::latest()->paginate(12);
+        return view('admin.landpay.index', compact('payments'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $owners = LandOwner::all();
+        return view('admin.landpay.create', compact('owners'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "land_owners_id"                  =>  "required",
+            "payment_date"           =>  "required",
+            "year"           =>  "required",
+            "amount"                 =>  "required",
+        ]);
+
+        $payment = new PaymentLandOwner();
+        $payment->land_owners_id = $request->input('land_owners_id');
+        $payment->payment_date = $request->input('payment_date');
+        $payment->year = $request->input('year');
+        $payment->amount = $request->input('amount');
+        $payment->remarks = $request->input('remarks');
+        $payment->save();
+
+        return redirect()->route('mati-payment.index')
+            ->with('success','Information added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\PaymentLandOwner  $paymentLandOwner
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PaymentLandOwner $paymentLandOwner)
+    public function show(PaymentLandOwner $payment)
     {
-        //
+        return view('admin.landpay.show', compact('payment'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\PaymentLandOwner  $paymentLandOwner
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PaymentLandOwner $paymentLandOwner)
+    public function edit($id)
     {
-        //
+        $owners = LandOwner::all();
+        $payment = PaymentLandOwner::latest()->where('id', $id)->first();
+
+        return view('admin.landpay.edit',compact('payment', 'owners'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PaymentLandOwner  $paymentLandOwner
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PaymentLandOwner $paymentLandOwner)
+    public function update(Request $request, PaymentLandOwner $payment)
     {
-        //
+        $request->validate([
+            "land_owners_id"                  =>  "required",
+            "payment_date"           =>  "required",
+            "year"           =>  "required",
+            "amount"                 =>  "required",
+        ]);
+        $payment->land_owners_id = $request->input('land_owners_id');
+        $payment->payment_date = $request->input('payment_date');
+        $payment->year = $request->input('year');
+        $payment->amount = $request->input('amount');
+        $payment->remarks = $request->input('remarks');
+        $payment->update();
+        return redirect()->route('land-pay.index')->with('success','Information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\PaymentLandOwner  $paymentLandOwner
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PaymentLandOwner $paymentLandOwner)
+    public function destroy($id)
     {
-        //
+        $payment = PaymentLandOwner::latest()->where('id', $id)->first();
+        $payment->delete();
+        return redirect()->route('land-pay.index')
+            ->with('success','Information deleted successfully');
+
     }
 }

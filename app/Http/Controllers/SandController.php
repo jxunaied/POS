@@ -7,79 +7,90 @@ use Illuminate\Http\Request;
 
 class SandController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $sands= Sand::latest()->paginate(12);
+        return view('admin.sand.index', compact('sands'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.sand.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "date"            =>  "required",
+            "quantity_cft"           =>  "required",
+            "rate"                =>  "required",
+            "truck_fair"            =>  "required",
+            "place_name"         =>  "required"
+        ]);
+
+        $sand = new Sand();
+        $sand->date = $request->input('date');
+        $sand->drum_truck = $request->input('drum_truck');
+        $sand->tc = $request->input('tc');
+        $sand->quantity_cft = $request->input('quantity_cft');
+        $sand->rate = $request->input('rate');
+        $sand->truck_fair = $request->input('truck_fair');
+        $sand->total_amount =  ($sand->quantity_cft * $sand->rate) +  $sand->truck_fair;
+        $sand->place_name = $request->input('place_name');
+        $sand->remarks = $request->input('remarks');
+        $sand->save();
+
+        return redirect()->route('sand.index')
+            ->with('success','Information added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Sand  $sand
-     * @return \Illuminate\Http\Response
-     */
     public function show(Sand $sand)
     {
-        //
+        return view('admin.sand.show', compact('sand'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Sand  $sand
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Sand $sand)
     {
-        //
+        return view('admin.sand.edit',compact('sand'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sand  $sand
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Sand $sand)
     {
-        //
+        $request->validate([
+            "date"            =>  "required",
+            "quantity_cft"           =>  "required",
+            "rate"                =>  "required",
+            "truck_fair"            =>  "required",
+            "place_name"         =>  "required"
+        ]);
+
+        $sand->date = $request->input('date');
+        $sand->drum_truck = $request->input('drum_truck');
+        $sand->tc = $request->input('tc');
+        $sand->quantity_cft = $request->input('quantity_cft');
+        $sand->rate = $request->input('rate');
+        $sand->truck_fair = $request->input('truck_fair');
+        $sand->total_amount =  ($sand->quantity_cft * $sand->rate) +  $sand->truck_fair;
+        $sand->place_name = $request->input('place_name');
+        $sand->remarks = $request->input('remarks');
+        $sand->update();
+        return redirect()->route('sand.index')->with('success','Information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Sand  $sand
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Sand $sand)
     {
-        //
+        $sand->delete();
+        return redirect()->route('sand.index')
+            ->with('success','Information deleted successfully');
+
     }
 }

@@ -9,9 +9,9 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Add New Info</h4>
+                        <h4 class="pull-left page-title">Add New Land</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="{{ route('products.index') }}">mati</a></li>
+                            <li><a href="{{ route('products.index') }}">Land</a></li>
                             <li class="active">create</li>
                         </ol>
                     </div>
@@ -32,43 +32,35 @@
                             </div>
                         @endif
                         <div class="panel panel-default">
-                            <div class="panel-heading"><h3 class="panel-title">Mati Information</h3></div>
+                            <div class="panel-heading"><h3 class="panel-title">Land Information</h3></div>
                             <div class="panel-body">
-                                <form action="{{ route('mati.update', $mati->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('land.update', $land->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
-                                        <label>Select Soil Sordar</label>
+                                        <label>Select Land Owner</label>
                                         <select name="soil_sorder_id" class="form-control" required>
-                                            <option value="" disabled selected>Select a Sordar</option>
-                                            @foreach($sordars as $sordar)
-                                                @if($sordar->id == $mati->soil_sorder_id)
-                                                    <option value="{{ $sordar->id }}" selected>{{ $sordar->name }}</option>
+                                            <option value="" disabled selected>Select Owner</option>
+                                            @foreach($owners as $owner)
+                                                @if($owner->id == $land->land_owners_id)
+                                                    <option value="{{ $owner->id }}" selected>{{ $owner->name }}</option>
                                                 @else
-                                                    <option value="{{ $sordar->id }}">{{ $sordar->name }}</option>
+                                                    <option value="{{ $owner->id }}">{{ $owner->name }}</option>
                                                 @endif
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Measurement</label>
-                                        <input type="text" value="{{ $mati->measurement }}" name="measurement" class="form-control" placeholder="measurement" required>
+                                        <label>Kata</label>
+                                        <input type="text" value="{{ $land->kata }}" name="kata" class="form-control" placeholder="Kata" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Total Cft</label>
-                                        <input type="number" value="{{ $mati->total_cft }}" name="total_cft" class="form-control" placeholder="total cft" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Rate</label>
-                                        <input type="number" value="{{ $mati->rate }}" name="rate" class="form-control" placeholder="Rate" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Amount</label>
-                                        <input type="number" value="{{ $mati->amount }}" name="amount" class="form-control" placeholder="amount" required>
+                                        <label>Decimal</label>
+                                        <input type="text" value="{{ $land->decimal }}" name="decimal" class="form-control" placeholder="Decimal" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Remarks</label>
-                                        <input type="text" value="{{ $mati->remarks }}" name="remarks" class="form-control" placeholder="Remarks" >
+                                        <input type="text" value="{{ $land->remarks }}" name="remarks" class="form-control" placeholder="Remarks" >
                                     </div>
                                     <button type="submit" class="btn btn-purple waves-effect waves-light">Update</button>
                                 </form>

@@ -61,4 +61,14 @@ Route::get('/sales-details/{id}', 'PosController@detailsOrders');
 Route::resource('soilsorder', 'SoilSordarController');
 Route::resource('mati', 'MatiController');
 Route::resource('mati-payment', 'PaymentSoilSorderController');
+
 Route::resource('coal', 'CoilController');
+Route::resource('sand', 'SandController');
+
+Route::resource('landowner', 'LandOwnerController');
+Route::resource('land', 'LandOfUbController');
+Route::resource('land-pay', 'PaymentLandOwnerController');
+
+Route::resource('milparty', 'MilPartyController');
+Route::resource('brick', 'MakingBricksController');
+Route::resource('milparty-payment', 'PaymentMilPartyController');

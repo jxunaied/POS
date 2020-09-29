@@ -3,83 +3,84 @@
 namespace App\Http\Controllers;
 
 use App\MakingBricks;
+use App\MilParty;
 use Illuminate\Http\Request;
 
 class MakingBricksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $bricks = MakingBricks::latest()->paginate(12);
+        return view('admin.bricks.index', compact('bricks'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $milaprty = MilParty::all();
+        return view('admin.bricks.create', compact('milparty'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "mil_party_id"                  =>  "required",
+            "date"                          =>  "required",
+            "brick_amount"                  =>  "required",
+            "payable"                       =>  "required",
+        ]);
+
+        $brick = new MakingBricks();
+        $brick->date = $request->input('date');
+        $brick->brick_amount = $request->input('brick_amount');
+        $brick->payable = $request->input('payable');
+        $brick->save();
+
+        return redirect()->route('brick.index')
+            ->with('success','Information added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\MakingBricks  $makingBricks
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MakingBricks $makingBricks)
+    public function show(MakingBricks $brick)
     {
-        //
+        return view('admin.bricks.show', compact('brick'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\MakingBricks  $makingBricks
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MakingBricks $makingBricks)
+    public function edit(MakingBricks $brick)
     {
-        //
+        $milaprty = MilParty::all();
+        return view('admin.bricks.edit',compact('brick', 'milaprty'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\MakingBricks  $makingBricks
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MakingBricks $makingBricks)
+    public function update(Request $request, MakingBricks $brick)
     {
-        //
+        $request->validate([
+            "mil_party_id"                  =>  "required",
+            "date"                          =>  "required",
+            "brick_amount"                  =>  "required",
+            "payable"                       =>  "required",
+        ]);
+
+        $brick->date = $request->input('date');
+        $brick->brick_amount = $request->input('brick_amount');
+        $brick->payable = $request->input('payable');
+        $brick->save();
+        $brick->update();
+        return redirect()->route('brick.index')->with('success','Information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\MakingBricks  $makingBricks
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MakingBricks $makingBricks)
+    public function destroy(MakingBricks $brick)
     {
-        //
+        $brick->delete();
+        return redirect()->route('brick.index')
+            ->with('success','Information deleted successfully');
+
     }
 }
