@@ -9,19 +9,19 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Brick Information</h4>
+                        <h4 class="pull-left page-title">Mil Party Payment Information</h4>
                         <ol class="breadcrumb pull-right">
-                            <li class="active">brick</li>
+                            <li class="active">payment</li>
                         </ol>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>All Brick Information</h2>
+                            <h2>All Payment Information</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-success" href="{{ route('brick.create') }}"> Create New Info</a>
+                            <a class="btn btn-success" href="{{ route('milparty-payment.create') }}"> Create New Info</a>
                         </div>
                     </div>
                 </div>
@@ -34,28 +34,28 @@
 
                 <div class="card-header">
                     <h3 class="card-title">
-                        Brick LISTS
+                        Payment LISTS
                     </h3>
                 </div>
                 <table class="table table-bordered">
                     <tr>
                         <th>Serial</th>
-                        <th>Mil Name</th>
-                        <th>Date</th>
-                        <th>Amount</th>
-                        <th>Pay</th>
+                        <th>Mil Party Name</th>
+                        <th>Payment Date</th>
+                        <th>Paid Amount</th>
+                        <th>Remarks</th>
                         <th width="200px">Action</th>
                     </tr>
-                    @foreach ($bricks as $brick)
+                    @foreach ($payments as $payment)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $brick->milpartyName->name }}</td>
-                            <td>{{ $brick->date }}</td>
-                            <td>{{ $brick->brick_amount }}</td>
-                            <td>{{ $brick->payable }}</td>
+                            <td>{{ $payment->milpartyName->name }}</td>
+                            <td>{{ $payment->payment_date }}</td>
+                            <td>{{ $payment->amount }}</td>
+                            <td>{{ $payment->remarks }}</td>
                             <td>
-                                <form action="{{ route('brick.destroy', $brick) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('brick.edit', $brick) }}">Edit</a>
+                                <form action="{{ route('milparty-payment.destroy', $payment) }}" method="POST">
+                                    <a class="btn btn-primary" href="{{ route('milparty-payment.edit', $payment->id) }}">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -68,6 +68,6 @@
         </div>
     </div>
 
-    {!! $bricks->links() !!}
+    {!! $payments->links() !!}
 
 @endsection

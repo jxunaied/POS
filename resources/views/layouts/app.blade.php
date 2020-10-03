@@ -41,7 +41,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="md md-terrain"></i> <span>Inventory POS </span></a>
+                        <a href="{{route('home')}}" class="logo"><i class="md md-terrain"></i> <span>Uttora Bricks </span></a>
                     </div>
                 </div>
                 <!-- Button mobile view to collapse sidebar menu -->
@@ -55,18 +55,18 @@
                                 <span class="clearfix"></span>
                             </div>
                             <form class="navbar-form pull-left" role="search">
-                                <div class="form-group">
+                                {{--<div class="form-group">
                                     <input type="text" class="form-control search-bar" placeholder="Type here for search...">
-                                </div>
+                                </div>--}}
                                 <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
                             </form>
 
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li class="dropdown hidden-xs">
-                                    <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
+                                    {{--<a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
                                         <i class="md md-notifications"></i> <span class="badge badge-xs badge-danger">3</span>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-lg">
+                                    </a>--}}
+                                    {{--<ul class="dropdown-menu dropdown-menu-lg">
                                         <li class="text-center notifi-title">Notification</li>
                                         <li class="list-group">
                                             <!-- list item-->
@@ -117,7 +117,7 @@
                                                 <small>See all notifications</small>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul>--}}
                                 </li>
                                 <li class="hidden-xs">
                                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
@@ -128,9 +128,9 @@
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ URL::to('dashboard/images/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
+                                       {{-- <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
                                         <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                                        <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
+                                        <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>--}}
                                         <li><a href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();"><i class="md md-settings-power"></i> Logout</a>
@@ -156,59 +156,59 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="{{ route('home') }}" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
+                                <a href="{{ route('home') }}" class="waves-effect"><i class="md md-home"></i><span> Dashboard </span></a>
                             </li>
                             <li>
-                                <a href="{{ route('pos') }}" class="waves-effect active"><i class="md md-home"></i><span> POS </span></a>
+                                <a href="{{ route('pos') }}" class="waves-effect"><i class="md md-print"></i><span> POS </span></a>
                             </li>
                             <li class="has_sub">
-                                <a href="{{ route('employee.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Employees </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="{{ route('employee.index') }}" class="waves-effect"><i class="md md-people"></i><span> Employees </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('employee.index') }}">All Employee</a></li>
                                     <li><a href="{{ route('salary.index') }}">Employee Salary</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="{{ route('supplier.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Suppliers </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="{{ route('supplier.index') }}" class="waves-effect"><i class="md md-domain"></i><span> Suppliers </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('supplier.index') }}">All Supplier</a></li>
                                     <li><a href="{{ route('supplier.create') }}">Add New Supplier</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="{{ route('customer.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Customers </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="{{ route('customer.index') }}" class="waves-effect"><i class="md md-tag-faces"></i><span> Customers </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('customer.index') }}">All Customer</a></li>
                                     <li><a href="{{ route('customer.create') }}">Add New Customer</a></li>
-                                    <li><a href="{{ route('customer-payment.index') }}">Customer Dues Payment</a></li>
+                                    {{--<li><a href="{{ route('customer-due.index') }}">Customer Dues Payment</a></li>--}}
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="{{ route('cashdeposit.create') }}" class="waves-effect"><i class="md md-mail"></i><span>Cash Deposit</span></a>
+                                <a href="{{ route('cashdeposit.create') }}" class="waves-effect"><i class="md md-attach-money"></i><span>Cash Deposit</span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('cashdeposit.index') }}">Cash Deposit</a></li>
                                     <li><a href="{{ route('cashdeposit.create') }}">Add Cash</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="{{ route('expensecategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span> Expense</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="{{ route('expensecategory.index') }}" class="waves-effect"><i class="md md-payment"></i><span> Expense</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('expensecategory.index') }}">Expense Category</a></li>
                                     <li><a href="{{ route('expense.index') }}">All Expense</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="{{ route('productcategory.index') }}" class="waves-effect"><i class="md md-mail"></i><span>Products</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="{{ route('productcategory.index') }}" class="waves-effect"><i class="md  md-now-widgets"></i><span>Products</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('productcategory.index') }}">Products Category</a></li>
                                     <li><a href="{{ route('products.index') }}">All Products</a></li>
                                 </ul>
                             </li>
                             <li >
-                                <a href="{{url('/sales')}}" class="waves-effect"><i class="md md-mail"></i><span>Sales</span></a>
+                                <a href="{{url('/sales')}}" class="waves-effect"><i class="md md-account-balance-wallet"></i><span>Sales</span></a>
                             </li>
                             <li class="has_sub">
-                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Mati</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="" class="waves-effect"><i class="md md-invert-colors-on"></i><span>Mati</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{route('soilsorder.index')}}">Soil Sorder</a></li>
                                     <li><a href="{{route('mati.index')}}">Mati</a></li>
@@ -216,13 +216,13 @@
                                 </ul>
                             </li>
                             <li >
-                                <a href="{{route('coal.index')}}" class="waves-effect"><i class="md md-mail"></i><span>Coal</span></a>
+                                <a href="{{route('coal.index')}}" class="waves-effect"><i class="md md-invert-colors-on"></i><span>Coal</span></a>
                             </li>
                             <li >
-                                <a href="{{route('sand.index')}}" class="waves-effect"><i class="md md-mail"></i><span>Sand</span></a>
+                                <a href="{{route('sand.index')}}" class="waves-effect"><i class="md md-invert-colors-on"></i><span>Sand</span></a>
                             </li>
                             <li class="has_sub">
-                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Land Of UB</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="" class="waves-effect"><i class="md md-landscape"></i><span>Land Of UB</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{route('landowner.index')}}">Land Owners</a></li>
                                     <li><a href="{{route('land.index')}}">Land</a></li>
@@ -230,19 +230,19 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Bricks</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="" class="waves-effect"><i class="md md-layers"></i><span>Bricks</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="{{route('milparty.index')}}">Mil Parties</a></li>
-                                    <li><a href="">Making Bricks</a></li>
-                                    <li><a href="">Payment</a></li>
+                                    <li><a href="{{route('brick.index')}}">Making Bricks</a></li>
+                                    <li><a href="{{route('milparty-payment.index')}}">Payment</a></li>
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="" class="waves-effect"><i class="md md-mail"></i><span>Diesel</span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <a href="" class="waves-effect"><i class="md md-local-gas-station"></i><span>Diesel</span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="">Diesel Mils</a></li>
-                                    <li><a href="">Diesel Inventory</a></li>
-                                    <li><a href="">Uses</a></li>
+                                    <li><a href="{{route('diesel.index')}}">Diesel Mils</a></li>
+                                    <li><a href="{{route('diesel-inventory.index')}}">Diesel Inventory</a></li>
+                                    <li><a href="{{route('diesel-uses.index')}}">Diesel Uses</a></li>
                                 </ul>
                             </li>
                         </ul>

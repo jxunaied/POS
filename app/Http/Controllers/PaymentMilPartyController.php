@@ -2,84 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\MilParty;
 use App\PaymentMilParty;
 use Illuminate\Http\Request;
 
 class PaymentMilPartyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $payments = PaymentMilParty::latest()->paginate(12);
+        return view('admin.milpay.index', compact('payments'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $owners = MilParty::all();
+        return view('admin.milpay.create', compact('owners'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "mil_party_id"         =>  "required",
+            "payment_date"           =>  "required",
+            "amount"                   =>  "required",
+        ]);
+
+        $payment = new PaymentMilParty();
+        $payment->mil_party_id = $request->input('mil_party_id');
+        $payment->payment_date = $request->input('payment_date');
+        $payment->amount = $request->input('amount');
+        $payment->remarks = $request->input('remarks');
+        $payment->save();
+
+        return redirect()->route('milparty-payment.index')
+            ->with('success','Information added successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\PaymentMilParty  $paymentMilParty
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PaymentMilParty $paymentMilParty)
+
+    public function edit($id)
     {
-        //
+        $owners = MilParty::all();
+        $payment = PaymentMilParty::latest()->where('id', $id)->first();
+
+        return view('admin.milpay.edit',compact('payment', 'owners'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\PaymentMilParty  $paymentMilParty
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PaymentMilParty $paymentMilParty)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "mil_party_id"         =>  "required",
+            "payment_date"           =>  "required",
+            "amount"                   =>  "required",
+        ]);
+
+        $payment = PaymentMilParty::latest()->where('id', $id)->first();
+        $payment->mil_party_id = $request->input('mil_party_id');
+        $payment->payment_date = $request->input('payment_date');
+        $payment->amount = $request->input('amount');
+        $payment->remarks = $request->input('remarks');
+        $payment->update();
+        return redirect()->route('milparty-payment.index')->with('success','Information updated successfully');
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PaymentMilParty  $paymentMilParty
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PaymentMilParty $paymentMilParty)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\PaymentMilParty  $paymentMilParty
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PaymentMilParty $paymentMilParty)
-    {
-        //
+        $payment = PaymentMilParty::latest()->where('id', $id)->first();
+        $payment->delete();
+        return redirect()->route('milparty-payment.index')
+            ->with('success','Information deleted successfully');
     }
 }

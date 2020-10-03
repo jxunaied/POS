@@ -66,13 +66,13 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>joining:</strong>
+                <strong>Joining:</strong>
                 {{ $employee->joining_date }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>leave:</strong>
+                <strong>Leave:</strong>
                 {{ $employee->leave_date }}
             </div>
         </div>

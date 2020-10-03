@@ -9,9 +9,9 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Cash Deposit</h4>
+                        <h4 class="pull-left page-title">Add New Info</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="{{ route('cashdeposit.index') }}">deposit</a></li>
+                            <li><a href="{{ route('diesel-uses.index') }}">dieseluses</a></li>
                             <li class="active">create</li>
                         </ol>
                     </div>
@@ -31,35 +31,27 @@
                                 </ul>
                             </div>
                         @endif
-                            @if ($message = Session::get('error'))
-                                <div class="alert alert-danger">
-                                    <p>{{ $message }}</p>
-                                </div>
-                            @endif
                         <div class="panel panel-default">
-                            <div class="panel-heading"><h3 class="panel-title">Cash Deposit Information</h3></div>
+                            <div class="panel-heading"><h3 class="panel-title">Information</h3></div>
                             <div class="panel-body">
-                                <form action="{{ route('cashdeposit.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('diesel-uses.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label>Deposit Date</label>
-                                        <input type="date" name="deposit_date" class="form-control" placeholder="Date" >
+                                        <label>Select Uses</label>
+                                        <select name="party_id" class="form-control" required>
+                                            <option value="" disabled selected>Select Mil</option>
+                                            @foreach($mils as $mil)
+                                                <option value="{{ $mil->id }}">{{ $mil->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>From</label>
-                                        <input type="text" name="from" class="form-control" placeholder="From" >
+                                        <label>Date</label>
+                                        <input type="date" name="date" class="form-control" placeholder="Date" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>To</label>
-                                        <input type="text" name="to" class="form-control" placeholder="to" >
-                                    </div>
-                                   <div class="form-group">
-                                        <label>Amount</label>
-                                        <input type="number" name="amount" class="form-control" placeholder="Amount" >
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Remarks</label>
-                                        <input type="text" name="remarks" class="form-control" placeholder="Remarks" >
+                                        <label>Amount Uses</label>
+                                        <input type="text"  name="amount" class="form-control" placeholder="Uses Amount" required>
                                     </div>
                                     <button type="submit" class="btn btn-purple waves-effect waves-light">Add</button>
                                 </form>

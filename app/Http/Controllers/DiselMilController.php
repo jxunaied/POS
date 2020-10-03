@@ -2,84 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use App\DiselMil;
+use App\DieselMil;
 use Illuminate\Http\Request;
 
 class DiselMilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $dieselmils = DieselMil::latest()->paginate(12);
+        return view('admin.dieselmil.index', compact('dieselmils'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.dieselmil.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"            =>  "required",
+        ]);
+
+        $coal = new DieselMil();
+        $coal->name = $request->input('name');
+        $coal->save();
+
+        return redirect()->route('diesel.index')
+            ->with('success','Information added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\DiselMil  $diselMil
-     * @return \Illuminate\Http\Response
-     */
-    public function show(DiselMil $diselMil)
+    public function show(DieselMil $diselmil)
     {
-        //
+        return view('admin.dieselmil.show', compact('diselmil'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\DiselMil  $diselMil
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(DiselMil $diselMil)
+    public function edit($id)
     {
-        //
+        $diselmil = DieselMil::latest()->where('id', $id)->get();
+        return view('admin.dieselmil.edit',compact('diselmil'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\DiselMil  $diselMil
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, DiselMil $diselMil)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "name"            =>  "required",
+        ]);
+
+        $diselmil = DieselMil::latest()->where('id', $id)->first();
+        $diselmil->name = $request->input('name');
+        $diselmil->update();
+        return redirect()->route('diesel.index')->with('success','Information updated successfully');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\DiselMil  $diselMil
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(DiselMil $diselMil)
+    public function destroy($id)
     {
-        //
+        $diselmil = DieselMil::latest()->where('id', $id)->first();
+        $diselmil->delete();
+        return redirect()->route('diesel.index')
+            ->with('success','Information deleted successfully');
+
     }
 }

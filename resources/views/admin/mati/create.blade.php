@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <h4 class="pull-left page-title">Add New Info</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="{{ route('products.index') }}">mati</a></li>
+                            <li><a href="{{ route('mati.index') }}">mati</a></li>
                             <li class="active">create</li>
                         </ol>
                     </div>

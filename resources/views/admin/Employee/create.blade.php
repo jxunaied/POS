@@ -58,15 +58,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label>NID</label>
-                                        <input type="number" name="nid" class="form-control" placeholder="NID" required>
+                                        <input type="number" name="nid" class="form-control" placeholder="NID" >
                                     </div>
                                     <div class="form-group">
                                         <label>Experience</label>
-                                        <input type="text" name="experience" class="form-control" placeholder="Experience" required>
+                                        <input type="text" name="experience" class="form-control" placeholder="Experience" >
                                     </div>
                                     <div class="form-group">
                                         <label>Salary</label>
-                                        <input type="text" name="salary" class="form-control" placeholder="Salary" required>
+                                        <input type="text" name="salary" class="form-control" placeholder="Salary" >
                                     </div>
                                     <div class="form-group">
                                         <label>Join Date</label>

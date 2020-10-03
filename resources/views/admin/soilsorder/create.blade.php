@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <h4 class="pull-left page-title">Add Soil Sorder</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="{{ route('soilsorder.index') }}">employee</a></li>
+                            <li><a href="{{ route('soilsorder.index') }}">soilsorder</a></li>
                             <li class="active">create</li>
                         </ol>
                     </div>

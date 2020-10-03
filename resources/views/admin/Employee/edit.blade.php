@@ -59,8 +59,14 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
+                        <strong>City:</strong>
+                        <input type="text" name="city" value="{{ $employee->city }}"  class="form-control" placeholder="City" required>
+                    </div>
+                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
                         <strong>NID:</strong>
-                        <input type="number" name="nid" value="{{ $employee->nid }}"  class="form-control" placeholder="Experience" required>
+                        <input type="number" name="nid" value="{{ $employee->nid }}"  class="form-control" placeholder="NID" >
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -73,12 +79,6 @@
                     <div class="form-group">
                         <strong>Salary:</strong>
                         <input type="text" name="salary" value="{{ $employee->salary }}"  class="form-control" placeholder="Salary" required>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>City:</strong>
-                        <input type="text" name="city" value="{{ $employee->city }}"  class="form-control" placeholder="City" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

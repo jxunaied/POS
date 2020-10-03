@@ -9,9 +9,9 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Add New Land</h4>
+                        <h4 class="pull-left page-title">Edit Info</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="{{ route('products.index') }}">Land</a></li>
+                            <li><a href="{{ route('brick.index') }}">brick</a></li>
                             <li class="active">create</li>
                         </ol>
                     </div>
@@ -32,17 +32,17 @@
                             </div>
                         @endif
                         <div class="panel panel-default">
-                            <div class="panel-heading"><h3 class="panel-title">Land Information</h3></div>
+                            <div class="panel-heading"><h3 class="panel-title">Brick Information</h3></div>
                             <div class="panel-body">
-                                <form action="{{ route('land.update', $land->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('brick.update', $brick->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
-                                        <label>Select Land Owner</label>
-                                        <select name="soil_sorder_id" class="form-control" required>
-                                            <option value="" disabled selected>Select Owner</option>
-                                            @foreach($owners as $owner)
-                                                @if($owner->id == $land->land_owners_id)
+                                        <label>Select Mil Party</label>
+                                        <select name="mil_party_id" class="form-control" required>
+                                            <option value="" disabled selected>Select Party</option>
+                                            @foreach($milaprty as $owner)
+                                                @if($owner->id == $brick->mil_party_id)
                                                     <option value="{{ $owner->id }}" selected>{{ $owner->name }}</option>
                                                 @else
                                                     <option value="{{ $owner->id }}">{{ $owner->name }}</option>
@@ -51,16 +51,16 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Kata</label>
-                                        <input type="text" value="{{ $land->kata }}" name="kata" class="form-control" placeholder="Kata" required>
+                                        <label>Date</label>
+                                        <input type="date" value="{{ $brick->date }}" name="date" class="form-control" placeholder="Date" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Decimal</label>
-                                        <input type="text" value="{{ $land->decimal }}" name="decimal" class="form-control" placeholder="Decimal" required>
+                                        <input type="text" value="{{ $brick->brick_amount }}" name="brick_amount" class="form-control" placeholder="Brick Amount" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Remarks</label>
-                                        <input type="text" value="{{ $land->remarks }}" name="remarks" class="form-control" placeholder="Remarks" >
+                                        <label>Payable</label>
+                                        <input type="text" value="{{ $brick->payable }}" name="payable" class="form-control" placeholder="Payable" >
                                     </div>
                                     <button type="submit" class="btn btn-purple waves-effect waves-light">Update</button>
                                 </form>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\CustomerDue;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class CustomerDueController extends Controller
 
     public function create()
     {
-        return view('admin.Customerpayment.create');
+        $customer = Customer::all();
+        return view('admin.Customerpayment.create', compact('customer'));
     }
 
 
@@ -41,7 +43,7 @@ class CustomerDueController extends Controller
         $customer->paid_date = $request->input('paid_date');
         $customer->paid_amount = $request->input('paid_amount');
         $customer->current_due = $request->input('current_due');
-        /*$customer->remarks = $request->input('remarks');*/
+        $customer->remarks = $request->input('remarks');
         $customer->save();
 
         return redirect()->route('customer-payment.index')
@@ -76,10 +78,10 @@ class CustomerDueController extends Controller
         $customer->paid_date = $request->input('paid_date');
         $customer->paid_amount = $request->input('paid_amount');
         $customer->current_due = $request->input('current_due');
-        /*$customer->remarks = $request->input('remarks');*/
+        $customer->remarks = $request->input('remarks');
         $customer->update();
 
-        return redirect()->route('Customerpayment.index')->with('success','Payment information updated successfully');
+        return redirect()->route('customer-payment.index')->with('success','Payment information updated successfully');
 
     }
 
@@ -87,7 +89,7 @@ class CustomerDueController extends Controller
     public function destroy(CustomerDue $customer)
     {
         $customer->delete();
-        return redirect()->route('Customerpayment.index')
+        return redirect()->route('customer-payment.index')
             ->with('success','Payment information deleted successfully');
 
     }

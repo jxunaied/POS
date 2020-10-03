@@ -23,7 +23,7 @@ class MakingBricksController extends Controller
     public function create()
     {
         $milaprty = MilParty::all();
-        return view('admin.bricks.create', compact('milparty'));
+        return view('admin.bricks.create', compact('milaprty'));
     }
 
 
@@ -37,6 +37,7 @@ class MakingBricksController extends Controller
         ]);
 
         $brick = new MakingBricks();
+        $brick->mil_party_id = $request->input('mil_party_id');
         $brick->date = $request->input('date');
         $brick->brick_amount = $request->input('brick_amount');
         $brick->payable = $request->input('payable');
@@ -67,10 +68,10 @@ class MakingBricksController extends Controller
             "payable"                       =>  "required",
         ]);
 
+        $brick->mil_party_id = $request->input('mil_party_id');
         $brick->date = $request->input('date');
         $brick->brick_amount = $request->input('brick_amount');
         $brick->payable = $request->input('payable');
-        $brick->save();
         $brick->update();
         return redirect()->route('brick.index')->with('success','Information updated successfully');
 

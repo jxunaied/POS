@@ -67,7 +67,7 @@ class SupplierController extends Controller
     public function update(Request $request, Supplier $supplier)
     {
         $request->validate([
-            "name"=>"required | min:3",
+            "name"=>"required",
             "phone"=>"required",
             "address"=>"required",
             "city"=>"required",

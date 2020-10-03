@@ -72,3 +72,7 @@ Route::resource('land-pay', 'PaymentLandOwnerController');
 Route::resource('milparty', 'MilPartyController');
 Route::resource('brick', 'MakingBricksController');
 Route::resource('milparty-payment', 'PaymentMilPartyController');
+
+Route::resource('diesel', 'DiselMilController');
+Route::resource('diesel-inventory', 'DiselInventoryController');
+Route::resource('diesel-uses', 'DieselUseController');

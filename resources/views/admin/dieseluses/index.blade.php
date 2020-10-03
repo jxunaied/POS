@@ -9,19 +9,19 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Brick Information</h4>
+                        <h4 class="pull-left page-title">Land Information</h4>
                         <ol class="breadcrumb pull-right">
-                            <li class="active">brick</li>
+                            <li class="active">land</li>
                         </ol>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>All Brick Information</h2>
+                            <h2>All Land Information</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-success" href="{{ route('brick.create') }}"> Create New Info</a>
+                            <a class="btn btn-success" href="{{ route('diesel-uses.create') }}"> Create New Info</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
                 <div class="card-header">
                     <h3 class="card-title">
-                        Brick LISTS
+                        Land LISTS
                     </h3>
                 </div>
                 <table class="table table-bordered">
@@ -43,19 +43,17 @@
                         <th>Mil Name</th>
                         <th>Date</th>
                         <th>Amount</th>
-                        <th>Pay</th>
                         <th width="200px">Action</th>
                     </tr>
-                    @foreach ($bricks as $brick)
+                    @foreach ($uses as $use)
                         <tr>
                             <td>{{ ++$i }}</td>
-                            <td>{{ $brick->milpartyName->name }}</td>
-                            <td>{{ $brick->date }}</td>
-                            <td>{{ $brick->brick_amount }}</td>
-                            <td>{{ $brick->payable }}</td>
+                            <td>{{ $use->milName->name }}</td>
+                            <td>{{ $use->date }}</td>
+                            <td>{{ $use->amount }}</td>
                             <td>
-                                <form action="{{ route('brick.destroy', $brick) }}" method="POST">
-                                    <a class="btn btn-primary" href="{{ route('brick.edit', $brick) }}">Edit</a>
+                                <form action="{{ route('diesel-uses.destroy', $use->id) }}" method="POST">
+                                    <a class="btn btn-primary" href="{{ route('diesel-uses.edit', $use) }}">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -68,6 +66,6 @@
         </div>
     </div>
 
-    {!! $bricks->links() !!}
+    {!! $uses->links() !!}
 
 @endsection

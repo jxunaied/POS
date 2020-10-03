@@ -37,7 +37,6 @@ class EmployeeController extends Controller
             "experience"=>  "required",
             "salary"    =>  "required",
             "city"      =>  "required",
-            "nid"       =>  "required"
         ]);
 
         $employee = new Employee();
@@ -77,7 +76,6 @@ class EmployeeController extends Controller
             "experience"=>  "required",
             "salary"    =>  "required",
             "city"      =>  "required",
-            "nid"       =>  "required"
         ]);
 
         $employee->update($request->all());

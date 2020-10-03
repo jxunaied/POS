@@ -9,9 +9,9 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Cash Deposit</h4>
+                        <h4 class="pull-left page-title">Add New Info</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="{{ route('cashdeposit.index') }}">deposit</a></li>
+                            <li><a href="{{ route('milparty-payment.index') }}">Payment</a></li>
                             <li class="active">create</li>
                         </ol>
                     </div>
@@ -31,37 +31,38 @@
                                 </ul>
                             </div>
                         @endif
-                            @if ($message = Session::get('error'))
-                                <div class="alert alert-danger">
-                                    <p>{{ $message }}</p>
-                                </div>
-                            @endif
                         <div class="panel panel-default">
-                            <div class="panel-heading"><h3 class="panel-title">Cash Deposit Information</h3></div>
+                            <div class="panel-heading"><h3 class="panel-title">Payment Information</h3></div>
                             <div class="panel-body">
-                                <form action="{{ route('cashdeposit.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('milparty-payment.update', $payment->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <div class="form-group">
-                                        <label>Deposit Date</label>
-                                        <input type="date" name="deposit_date" class="form-control" placeholder="Date" >
+                                        <label>Select Mil Party</label>
+                                        <select name="mil_party_id" class="form-control" required>
+                                            <option value="" disabled selected>Select Mil Party</option>
+                                            @foreach($owners as $owner)
+                                                @if($owner->id == $payment->mil_party_id)
+                                                    <option value="{{ $owner->id }}" selected>{{ $owner->name }}</option>
+                                                @else
+                                                    <option value="{{ $owner->id }}">{{ $owner->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>From</label>
-                                        <input type="text" name="from" class="form-control" placeholder="From" >
+                                        <label>Payment Date</label>
+                                        <input type="date" value="{{ $payment->payment_date }}" name="payment_date" class="form-control" placeholder="Date" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>To</label>
-                                        <input type="text" name="to" class="form-control" placeholder="to" >
-                                    </div>
-                                   <div class="form-group">
-                                        <label>Amount</label>
-                                        <input type="number" name="amount" class="form-control" placeholder="Amount" >
+                                        <label>Payment Amount</label>
+                                        <input type="number" value="{{ $payment->amount }}" name="amount" class="form-control" placeholder="Payment Amount" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Remarks</label>
-                                        <input type="text" name="remarks" class="form-control" placeholder="Remarks" >
+                                        <input type="text" value="{{ $payment->remarks }}" name="remarks" class="form-control" placeholder="Remarks" >
                                     </div>
-                                    <button type="submit" class="btn btn-purple waves-effect waves-light">Add</button>
+                                    <button type="submit" class="btn btn-purple waves-effect waves-light">Update</button>
                                 </form>
                             </div><!-- panel-body -->
                         </div> <!-- panel -->
