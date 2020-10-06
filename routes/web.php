@@ -20,6 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/home2', 'HomeSaleController@index')->name('home2');
+Route::resource('sale2', 'SaleAtaGlanceController');
+Route::get('sale2-filter/{date?}/{month?}/{year?}', 'SaleAtaGlanceController@sale_filter')->name('sale2.filter');
+Route::get('sale2-month', 'SaleAtaGlanceController@saleMonth')->name('sale2Months');
+Route::get('sale2-year', 'SaleAtaGlanceController@sale_year')->name('sale2Years');
+
 Route::resource('employee', 'EmployeeController');
 
 Route::resource('salary', 'SalaryController');

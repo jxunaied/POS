@@ -155,8 +155,16 @@
                     <!--- Divider -->
                     <div id="sidebar-menu">
                         <ul>
+                            <li class="has_sub">
+                                <a href="{{ route('home2') }}" class="waves-effect"><i class="md md-people"></i><span> Dashboard </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('home2') }}">Dashboard</a></li>
+                                    <li><a href="{{ route('sale2.index') }}">All Sales</a></li>
+                                    <li><a href="{{ route('sale2.create') }}">Add Today's Sales</a></li>
+                                </ul>
+                            </li>
                             <li>
-                                <a href="{{ route('home') }}" class="waves-effect"><i class="md md-home"></i><span> Dashboard </span></a>
+                                <a href="{{ route('home') }}" class="waves-effect"><i class="md md-home"></i><span> Dashboard 2</span></a>
                             </li>
                             <li>
                                 <a href="{{ route('pos') }}" class="waves-effect"><i class="md md-print"></i><span> POS </span></a>
@@ -313,6 +321,19 @@
                 time: 1200
             });
         });
+    </script>
+
+    <!-- CUSTOM JS -->
+    <script src="{{ asset('js/jquery.app.js') }}"></script>
+
+    <script src="{{ asset('assets/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/datatables/dataTables.bootstrap.js') }}"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#datatable').dataTable();
+        } );
     </script>
 </body>
 </html>
