@@ -31,23 +31,23 @@ class HomeSaleController extends Controller
         $date = Carbon::today()->subDays(7);
 
         $sales = saleAtaGlance::sum('cash_sale');
-        $salesToday = saleAtaGlance::where('date', date('d/m/y'))->sum('cash_sale');
+        $salesToday = saleAtaGlance::where('date', date('Y-m-d'))->sum('cash_sale');
         $salesSeven = saleAtaGlance::where('date', '>=', $date)->sum('cash_sale');
 
         $bricks = saleAtaGlance::sum('qty_bricks');
-        $bricksToday = saleAtaGlance::where('date', date('d/m/y'))->sum('qty_bricks');
+        $bricksToday = saleAtaGlance::where('date', date('Y-m-d'))->sum('qty_bricks');
         $bricksSeven = saleAtaGlance::where('date', '>=', $date)->sum('qty_bricks');
 
         $expense = saleAtaGlance::sum('expense');
-        $expenseToday = saleAtaGlance::where('date', date('d-m-y'))->sum('expense');
+        $expenseToday = saleAtaGlance::where('date', date('Y-m-d'))->sum('expense');
         $expenseSeven = saleAtaGlance::where('date', '>=', $date)->sum('expense');
 
         $due = saleAtaGlance::sum('dues');
-        $dueToday = saleAtaGlance::where('date', date('d/m/y'))->sum('dues');
+        $dueToday = saleAtaGlance::where('date',date('Y-m-d'))->sum('dues');
         $dueMonth = saleAtaGlance::whereMonth('date', '>=', date('m'))->sum('dues');
 
         $deposits = saleAtaGlance::sum('deposits');
-        $depositsToday = saleAtaGlance::where('date', date('d/m/y'))->sum('deposits');
+        $depositsToday = saleAtaGlance::where('date', date('Y-m-d'))->sum('deposits');
         $depositsMonth = saleAtaGlance::whereMonth('date', '>=', date('m'))->sum('deposits');
         $depositsSeven = saleAtaGlance::where('date', '>=', $date)->sum('deposits');
 
